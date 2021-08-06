@@ -9,6 +9,8 @@ const axiosReborn = async (method, endpoint, obj, session) => {
       Authorization: session.token.access
         ? 'Bearer ' + session.token.access
         : null,
+      'content-type': 'application/json',
+      accept: 'application/json',
     },
   })
 
@@ -19,7 +21,10 @@ const axiosReborn = async (method, endpoint, obj, session) => {
     async (error) => {
       console.log('THERE WAS AN ERROR #1', error)
       const originalRequest = error.config
+      console.log('ORIGINAL REQUEST #2', originalRequest)
       const serverResponse = error.response
+      console.log('SERVER RESPONSE #3', serverResponse)
+      console.log('SERVER RESPONSE STATUS #4', serverResponse.status)
 
       // console.log('SE DISPARÓ UN ERROR: ', serverResponse)
       // if (
