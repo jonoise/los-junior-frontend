@@ -11,6 +11,7 @@ const axiosReborn = async (method, endpoint, obj, session) => {
         : null,
       'content-type': 'application/json',
       accept: 'application/json',
+      origin: 'https://www.losjunior.co',
     },
   })
 
