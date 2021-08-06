@@ -90,7 +90,7 @@ function CommentApp({ post_id }) {
             {comments && (
               <VStack py="5">
                 {comments.map((comment) => (
-                  <Comment comment={comment} key={comment.uu_id} />
+                  <Comment comment={comment} key={comment.uuid} />
                 ))}
               </VStack>
             )}

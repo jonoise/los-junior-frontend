@@ -16,9 +16,9 @@ function CommentInput({ post_id, setComments }) {
   const [session] = useSession()
 
   const handleSubmit = async (e) => {
-    const uu_id = uuid_v4()
+    const uuid = uuid_v4()
     const newComment = Object.freeze({
-      uu_id,
+      uuid,
       post_id,
       content: content.trim(),
     })
