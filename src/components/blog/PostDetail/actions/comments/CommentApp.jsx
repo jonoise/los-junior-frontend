@@ -34,12 +34,7 @@ function CommentApp({ post_id }) {
 
   const fetchPostComments = async (post_id) => {
     const url = `${API_BASE_URL}/comments/?post_id=${post_id}`
-    const res = await axios.get(url, {
-      headers: {
-        'content-type': 'application/json',
-        accept: 'application/json',
-      },
-    })
+    const res = await axios.get(url)
     const data = await res.data
     setComments(data)
   }

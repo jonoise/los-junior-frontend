@@ -23,6 +23,7 @@ function CommentInput({ post_id, setComments }) {
       content: content.trim(),
     })
     const comment = await axios('POST', '/comments/', newComment, session)
+    console.log('COMMENT #1: ', comment)
     setComments((prev) => {
       const newState = [comment.data, ...prev]
       return newState

@@ -9,8 +9,6 @@ const axiosReborn = async (method, endpoint, obj, session) => {
       Authorization: session.token.access
         ? 'Bearer ' + session.token.access
         : null,
-      'Content-Type': 'application/json',
-      accept: 'application/json',
     },
   })
 
@@ -19,6 +17,7 @@ const axiosReborn = async (method, endpoint, obj, session) => {
       return response
     },
     async (error) => {
+      console.log('THERE WAS AN ERROR #1', error)
       const originalRequest = error.config
       const serverResponse = error.response
 
