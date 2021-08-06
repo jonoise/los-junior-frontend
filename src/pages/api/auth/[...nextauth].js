@@ -1,5 +1,8 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import {
+    API_BASE_URL
+} from '../../../constants'
 
 export default (req, res) => NextAuth(req, res, {
     providers: [
@@ -42,7 +45,7 @@ export default (req, res) => NextAuth(req, res, {
                     email: email
                 }
 
-                const fetchURL = `http://localhost:8000/api/accounts/callback/github/`
+                const fetchURL = `${API_BASE_URL}/accounts/callback/github/`
                 const tokenRes = await fetch(fetchURL, {
                     method: 'POST',
                     body: JSON.stringify(githubUser),
