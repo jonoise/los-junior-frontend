@@ -14,3 +14,314 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* ************************ */
+/* CHAKRA UI REMOVE OUTLINE */
+/* ************************ */
+
+.disableFocus:focus {
+  box-shadow: none !important;
+}
+
+.disableFocus[data-focus] {
+  box-shadow: none !important;
+}
+
+/* ********************* */
+/* DATE PICKER DARK MODE */
+/* ********************* */
+
+.date-picker-dark {
+  background-color: #2D3748;
+  color: white;
+}
+
+
+.loadingContainer {
+  text-align: center;
+}
+
+
+.loadingHeader {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.loadingLogo {
+  height: 30vmin;
+  pointer-events: none;
+  margin-bottom: 2rem;
+}
+
+.markdownContent table,
+td,
+th {
+  border: 1px solid;
+  padding: .5rem;
+}
+
+.markdownContent table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .loadingLogo {
+    animation: loadingLogo-float infinite 3s ease-in-out;
+  }
+}
+
+@keyframes loadingLogo-float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+.markdownContent {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.markdownContent p {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.markdownContent h1 {
+  font-size: 2.7rem;
+  margin: 2.5rem 0;
+  line-height: 3rem;
+}
+
+.markdownContent h2 {
+  font-size: 2.2rem;
+  margin: 2rem 0;
+  line-height: 2.6rem;
+
+}
+
+.markdownContent h3 {
+  font-size: 1.7rem;
+  margin: 1rem 0;
+  line-height: 2.5rem;
+
+}
+
+.markdownContent h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  line-height: 2.5rem;
+}
+
+.markdownContent h5 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: .8rem 0;
+  line-height: 2.5rem;
+}
+
+.markdownContent h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: .8rem 0;
+  line-height: 2.5rem;
+}
+
+.markdownContent code {
+  font-size: 1.3rem;
+}
+
+.markdownContent pre {
+  margin: 1rem 0;
+}
+
+.markdownContent li {
+  font-size: 1.4rem;
+  margin-left: 3rem;
+}
+
+.markdownContent a {
+  color: rgb(60, 245, 174);
+
+}
+
+@media screen and (max-width: 786px) {
+
+  .markdownContent h1 {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+  }
+
+
+  .markdownContent h2 {
+    font-size: 2rem;
+  }
+
+  .markdownContent code {
+    font-size: 1rem;
+  }
+
+  .markdownContent li {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+  }
+}
+
+
+
+/***********************************/
+/*         MARKDOWN PREVIEW        */
+/***********************************/
+.markdownPreview {
+  width: 100%;
+  padding: 0rem 1rem;
+  border-radius: 10px;
+}
+
+.markdownPreview ul {
+  margin: .8rem 0;
+}
+
+.markdownPreview table,
+td,
+th {
+  border: 1px solid;
+  padding: .5rem;
+}
+
+.markdownPreview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.markdownPreview {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.markdownPreview p {
+  font-size: 1rem;
+  margin: .8rem 0;
+}
+
+.markdownPreview h1 {
+  font-size: 2.2rem;
+  margin: .8rem 0;
+  line-height: 2.39rem;
+}
+
+.markdownPreview h2 {
+  font-size: 1.9rem;
+  margin: 1rem 0;
+  line-height: 2rem;
+}
+
+.markdownPreview h3 {
+  font-size: 1.6rem;
+  margin: .8rem 0;
+  line-height: 1.5rem;
+
+}
+
+.markdownPreview h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: .8rem 0;
+  line-height: 1.3rem;
+}
+
+.markdownPreview h5 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: .5rem 0;
+  line-height: 1.3rem;
+}
+
+.markdownPreview h6 {
+  font-size: .9rem;
+  font-weight: bold;
+  margin: .5rem 0;
+  line-height: 1.3rem;
+}
+
+.markdownPreview code {
+  font-size: 1rem;
+}
+
+.markdownPreview pre {
+  margin: 1rem 0;
+}
+
+.markdownPreview li {
+  font-size: 1rem;
+  margin-left: 3rem;
+}
+
+.markdownPreview a {
+  color: rgb(36, 138, 90);
+  font-weight: bold;
+
+}
+
+@media screen and (max-width: 786px) {
+
+  .markdownPreview h1 {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+  }
+
+
+  .markdownPreview h2 {
+    font-size: 2rem;
+  }
+
+  .markdownPreview code {
+    font-size: 1rem;
+  }
+
+  .markdownPreview li {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+  }
+}
+
+.react-datepicker__input-container {
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  border-color: hsl(0, 0%, 80%);
+}
+
+.react-datepicker__input-container:hover {
+  border-color: hsl(0, 0%, 70%);
+}
+
+.react-datepicker__input-container:focus-within {
+  z-index: 1;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 1px #3182ce;
+}
+
+
+.react-datepicker__input-container>input {
+  width: 100%;
+  height: 100%;
+  outline: 0;
+}

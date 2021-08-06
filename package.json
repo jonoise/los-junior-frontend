@@ -6,11 +6,23 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.14",
+    "@chakra-ui/react": "^1.6.5",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "@reduxjs/toolkit": "1.5.0",
+    "axios": "^0.21.1",
+    "framer-motion": "^4.1.17",
     "next": "latest",
+    "next-auth": "^3.27.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "7.2.2"
+    "react-icons": "^4.2.0",
+    "react-markdown": "^6.0.3",
+    "react-redux": "7.2.2",
+    "react-syntax-highlighter": "^15.4.4",
+    "remark-gfm": "^1.0.0",
+    "uuid": "^8.3.2"
   },
   "license": "MIT"
 }

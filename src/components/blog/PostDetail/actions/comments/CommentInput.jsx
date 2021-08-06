@@ -1,0 +1,68 @@
+import {
+  Button,
+  Text,
+  Textarea,
+  useColorModeValue,
+  VStack,
+} from '@chakra-ui/react'
+import { useSession } from 'next-auth/client'
+import { useState } from 'react'
+import { combineReducers } from 'redux'
+import { v4 as uuid_v4 } from 'uuid'
+import axios from '../../../../../lib/axios'
+
+function CommentInput({ post_id, setComments }) {
+  const [content, setContent] = useState('')
+  const [session] = useSession()
+
+  const handleSubmit = async (e) => {
+    const uu_id = uuid_v4()
+    const newComment = Object.freeze({
+      uu_id,
+      post_id,
+      content: content.trim(),
+    })
+    const comment = await axios('POST', '/comments/', newComment, session)
+    setComments((prev) => {
+      const newState = [comment.data, ...prev]
+      return newState
+    })
+    setContent('')
+  }
+  const handleChange = (e) => {
+    setContent(e.target.value)
+    console.log(content)
+  }
+
+  return (
+    <>
+      <VStack minH="1rem" align={'flex-start'}>
+        <Textarea
+          value={content}
+          onChange={handleChange}
+          borderWidth="1px"
+          borderColor={useColorModeValue('blue.300', 'gray.200')}
+          h="full"
+          w="full"
+          maxH="full"
+          placeholder="Agrega un comentario..."
+          _placeholder={{ color: useColorModeValue('gray.500', 'yellow.100') }}
+        ></Textarea>
+        <Button
+          onClick={handleSubmit}
+          fontSize={'sm'}
+          fontWeight={600}
+          color={'white'}
+          bg={'green.400'}
+          _hover={{
+            bg: 'green.500',
+          }}
+        >
+          Enviar
+        </Button>
+      </VStack>
+    </>
+  )
+}
+
+export default CommentInput
