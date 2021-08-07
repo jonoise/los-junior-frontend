@@ -1,21 +1,9 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Text,
-  useColorMode,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Button, Flex, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/client'
-import { FaHeart } from 'react-icons/fa'
 import { postIsLiked, fetchPostLikes } from './searchLike'
 import Heart from './LikeHeart'
+import HeartOffline from './LikeHearOffline'
 
 function App({ post_id }) {
   const [likes, setLikes] = useState(null)
@@ -35,10 +23,6 @@ function App({ post_id }) {
     }
   }, [session, likes])
 
-  const loginRequired = () => {
-    return null
-  }
-
   return (
     <>
       <Flex align="center">
@@ -56,9 +40,7 @@ function App({ post_id }) {
           borderLeft={`10px solid ${useColorModeValue('#EDF2F7', '#2D3748')}`}
         />
         {!session ? (
-          <Button mr="2">
-            <FaHeart onClick={loginRequired} />
-          </Button>
+          <HeartOffline />
         ) : (
           <>
             <Heart
