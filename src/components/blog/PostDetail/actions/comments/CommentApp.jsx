@@ -3,7 +3,6 @@ import { FaComment } from 'react-icons/fa'
 import { API_BASE_URL } from '../../../../../constants'
 import axios from 'axios'
 import {
-  Avatar,
   Button,
   Drawer,
   DrawerBody,
@@ -12,12 +11,6 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Flex,
-  Heading,
-  Input,
-  Text,
-  Textarea,
-  useColorModeValue,
   useDisclosure,
   VStack,
 } from '@chakra-ui/react'
@@ -25,6 +18,7 @@ import { useSession } from 'next-auth/client'
 import Comment from './Comment'
 import CommentInput from './CommentInput'
 import CommentInputDisabled from './CommentInputDisable'
+import NoComments from './NoComments'
 
 function CommentApp({ post_id }) {
   const [comments, setComments] = useState(null)
@@ -82,13 +76,16 @@ function CommentApp({ post_id }) {
               <CommentInputDisabled />
             )}
 
-            {comments && (
-              <VStack py="5">
-                {comments.map((comment) => (
-                  <Comment comment={comment} key={comment.uuid} />
-                ))}
-              </VStack>
-            )}
+            {comments &&
+              (comments.length > 0 ? (
+                <VStack py="5">
+                  {comments.map((comment) => (
+                    <Comment comment={comment} key={comment.uuid} />
+                  ))}
+                </VStack>
+              ) : (
+                <NoComments />
+              ))}
           </DrawerBody>
           <DrawerFooter></DrawerFooter>
         </DrawerContent>
