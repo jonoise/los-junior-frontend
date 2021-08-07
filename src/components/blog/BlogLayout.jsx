@@ -21,6 +21,7 @@ import {
   setPosts,
   setLoading,
 } from './blogSlice'
+import SearchField from './SearchField'
 
 const BlogLayout = () => {
   const dispatch = useDispatch()
@@ -74,6 +75,7 @@ const BlogLayout = () => {
             minW={{ base: '15rem', lg: '20rem', xl: '25rem' }}
             display={['none', 'none', 'flex']}
           >
+            <SearchField />
             <Flex
               boxShadow="lg"
               p="6"
