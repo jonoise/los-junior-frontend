@@ -1,7 +1,10 @@
 import React from 'react'
 import { chakra, Flex, useColorModeValue } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCurrentPaginatorPage, setPage } from '../blog/blogSlice'
+import {
+  selectCurrentPaginatorPage,
+  setCurrentPaginatorPage,
+} from '../blog/blogSlice'
 
 const PaginatorApp = ({ posts }) => {
   // ACTUAL VALUES IN THE PAGINATOR
@@ -60,14 +63,14 @@ const PagButton = (props) => {
 
   const handleClick = (selectedPage) => {
     if (selectedPage === 'sig') {
-      dispatch(setPage(currentPage + 1))
+      dispatch(setCurrentPaginatorPage(currentPage + 1))
       return
     }
     if (selectedPage === 'ant') {
-      dispatch(setPage(currentPage - 1))
+      dispatch(setCurrentPaginatorPage(currentPage - 1))
       return
     }
-    dispatch(setPage(selectedPage))
+    dispatch(setCurrentPaginatorPage(selectedPage))
   }
 
   return (

@@ -19,12 +19,8 @@ const axiosReborn = async (method, endpoint, obj, session) => {
       return response
     },
     async (error) => {
-      console.log('THERE WAS AN ERROR #1', error)
       const originalRequest = error.config
-      console.log('ORIGINAL REQUEST #2', originalRequest)
       const serverResponse = error.response
-      console.log('SERVER RESPONSE #3', serverResponse)
-      console.log('SERVER RESPONSE STATUS #4', serverResponse.status)
 
       // console.log('SE DISPARÓ UN ERROR: ', serverResponse)
       // if (
@@ -107,7 +103,7 @@ const axiosReborn = async (method, endpoint, obj, session) => {
         const data = await res.data
         return data
       } catch (error) {
-        console.log('POST SWITCH ERROR: ', error)
+        console.log('DELETE SWITCH ERROR: ', error)
       }
       break
     case 'PATCH':
@@ -116,7 +112,7 @@ const axiosReborn = async (method, endpoint, obj, session) => {
         const data = await res.data
         return data
       } catch (error) {
-        console.log('POST SWITCH ERROR: ', error)
+        console.log('PATCH SWITCH ERROR: ', error)
       }
       break
     case 'PUT':
@@ -125,7 +121,7 @@ const axiosReborn = async (method, endpoint, obj, session) => {
         const data = await res.data
         return data
       } catch (error) {
-        console.log('POST SWITCH ERROR: ', error)
+        console.log('PUT SWITCH ERROR: ', error)
       }
       break
 

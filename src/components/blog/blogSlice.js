@@ -15,7 +15,7 @@ const blogSlice = createSlice({
         setPosts: (state, action) => {
             state.posts = action.payload
         },
-        setPage: (state, action) => {
+        setCurrentPaginatorPage: (state, action) => {
             state.currentPaginatorPage = action.payload
         },
         setLoading: (state, action) => {
@@ -25,7 +25,7 @@ const blogSlice = createSlice({
 })
 
 export const {
-    setPage,
+    setCurrentPaginatorPage,
     setPosts,
     setLoading
 } = blogSlice.actions
