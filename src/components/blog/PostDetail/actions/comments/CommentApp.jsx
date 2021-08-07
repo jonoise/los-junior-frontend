@@ -80,7 +80,11 @@ function CommentApp({ post_id }) {
               (comments.length > 0 ? (
                 <VStack py="5">
                   {comments.map((comment) => (
-                    <Comment comment={comment} key={comment.uuid} />
+                    <Comment
+                      key={comment.uuid}
+                      comment={comment}
+                      setComments={setComments}
+                    />
                   ))}
                 </VStack>
               ) : (

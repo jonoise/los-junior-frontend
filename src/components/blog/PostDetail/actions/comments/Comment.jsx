@@ -1,16 +1,13 @@
 import React from 'react'
-import {
-  Flex,
-  useColorModeValue,
-  Text,
-  useDisclosure,
-  Avatar,
-  Box,
-} from '@chakra-ui/react'
+import { Flex, useColorModeValue, Text, Avatar } from '@chakra-ui/react'
 import formatDate from '../../../../../lib/dateStringify'
+import { useSession } from 'next-auth/client'
+import DeleteComment from './DeleteComment'
 
-const Comment = ({ comment }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+const Comment = ({ comment, setComments }) => {
+  const [session] = useSession()
+  const { author, content, created } = comment
+  console.log(comment)
   return (
     <>
       <Flex
@@ -30,20 +27,20 @@ const Comment = ({ comment }) => {
           bg={useColorModeValue('gray.300', 'gray.800')}
         >
           <Flex alignItems="center">
-            <Avatar
-              name={comment.author.name}
-              src={comment.author.image}
-              size="xs"
-              mr="2"
-            />
+            <Avatar name={author.name} src={author.image} size="xs" mr="2" />
             <Text fontWeight="bold" fontSize="12">
-              {comment.author.name} comentó:
+              {author.name} comentó:
             </Text>
           </Flex>
-          <Text fontSize="10px">Fecha: {formatDate(comment.created)}</Text>
+          <Flex align="center" justify="center">
+            <Text fontSize="10px">Fecha: {formatDate(created)}</Text>
+            {session && session.user.username === author.username && (
+              <DeleteComment comment={comment} setComments={setComments} />
+            )}
+          </Flex>
         </Flex>
         <Flex p="2" pl="8" bg={useColorModeValue('gray.200', 'gray.900')}>
-          <Text>{comment.content}</Text>
+          <Text>{content}</Text>
         </Flex>
       </Flex>
     </>
