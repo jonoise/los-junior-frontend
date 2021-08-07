@@ -8,7 +8,7 @@ function BlogIndex() {
         description="Únete a Los Junior. Toma el camino del aprendiz, conviértete en desarrollador de software y hazte un nombre en la comunidad mientras aprendes cosas nuevas."
         type="blog"
         url="https://losjunior.co/blog/"
-        image="https://user-images.githubusercontent.com/71573508/128595885-33bf4c64-5620-4ae2-99b3-e4a0f5e45ce1.png"
+        image="https://user-images.githubusercontent.com/71573508/128596164-60821f54-9b7a-4e98-a302-19291fa22a7f.png"
       />
       <BlogLayout />
     </>
