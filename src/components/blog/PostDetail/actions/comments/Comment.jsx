@@ -7,7 +7,6 @@ import DeleteComment from './DeleteComment'
 const Comment = ({ comment, setComments }) => {
   const [session] = useSession()
   const { author, content, created } = comment
-  console.log(comment)
   return (
     <>
       <Flex
