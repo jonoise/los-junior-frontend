@@ -4,18 +4,31 @@ import {
   Textarea,
   useColorModeValue,
   VStack,
+  useToast,
 } from '@chakra-ui/react'
 import { useSession } from 'next-auth/client'
 import { useState } from 'react'
-import { combineReducers } from 'redux'
 import { v4 as uuid_v4 } from 'uuid'
 import axios from '../../../../../lib/axios'
 
 function CommentInput({ post_id, setComments }) {
   const [content, setContent] = useState('')
   const [session] = useSession()
-
+  const [disableSubmit, setDisableSumit] = useState(false)
+  const toast = useToast()
   const handleSubmit = async (e) => {
+    if (content.length === 0) {
+      toast({
+        id: 'commentInput',
+        status: 'error',
+        title: 'Rellena la caja de comentarios.',
+        description: 'No puedes enviar comentarios vacíos.',
+        duration: 4000,
+      })
+      return false
+    }
+
+    setDisableSumit(true)
     const uuid = uuid_v4()
     const newComment = Object.freeze({
       uuid,
@@ -29,10 +42,11 @@ function CommentInput({ post_id, setComments }) {
       return newState
     })
     setContent('')
+    setDisableSumit(false)
   }
+
   const handleChange = (e) => {
     setContent(e.target.value)
-    console.log(content)
   }
 
   return (
@@ -50,6 +64,7 @@ function CommentInput({ post_id, setComments }) {
           _placeholder={{ color: useColorModeValue('gray.500', 'yellow.100') }}
         ></Textarea>
         <Button
+          disabled={disableSubmit}
           onClick={handleSubmit}
           fontSize={'sm'}
           fontWeight={600}
