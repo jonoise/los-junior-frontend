@@ -24,31 +24,36 @@ const PaginatorApp = ({ posts }) => {
 
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
-      <Flex>
-        {prev ? (
-          <PagButton dis={false}>ant</PagButton>
-        ) : (
-          <PagButton disabled dis={true}>
-            ant
-          </PagButton>
-        )}
-        {totalPages(total, per_page).map((page) =>
-          page == page_num ? (
-            <PagButton active key={page}>
-              {page}
-            </PagButton>
+      {/* IF NOT POSTS, it DOES NOT display the paginator */}
+      {posts.results.length < 1 ? (
+        ''
+      ) : (
+        <Flex>
+          {prev ? (
+            <PagButton dis={false}>ant</PagButton>
           ) : (
-            <PagButton key={page}>{page}</PagButton>
-          )
-        )}
-        {next && page_num < 5 ? (
-          <PagButton dis={false}>sig</PagButton>
-        ) : (
-          <PagButton disabled dis={true}>
-            sig
-          </PagButton>
-        )}
-      </Flex>
+            <PagButton disabled dis={true}>
+              ant
+            </PagButton>
+          )}
+          {totalPages(total, per_page).map((page) =>
+            page == page_num ? (
+              <PagButton active key={page}>
+                {page}
+              </PagButton>
+            ) : (
+              <PagButton key={page}>{page}</PagButton>
+            )
+          )}
+          {next && page_num < 5 ? (
+            <PagButton dis={false}>sig</PagButton>
+          ) : (
+            <PagButton disabled dis={true}>
+              sig
+            </PagButton>
+          )}
+        </Flex>
+      )}
     </Flex>
   )
 }
