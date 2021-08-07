@@ -11,10 +11,11 @@ const EmptyScreen = () => {
     >
       <Heading>No hemos encontrado un match a tu query 😢</Heading>
       <Text>Trata con una palabra específica o una frase pequeña</Text>
-      <Text>
+      {/* TODO: BLOG ADVANCED SEARCH */}
+      {/* <Text>
         Sino, puedes elaborar una{' '}
         <a href="/blog/buscar/">búsqueda más avanzada</a>.
-      </Text>
+      </Text> */}
     </Flex>
   )
 }
