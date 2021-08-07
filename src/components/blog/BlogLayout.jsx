@@ -22,6 +22,8 @@ import {
   setLoading,
 } from './blogSlice'
 import SearchField from './SearchField'
+import MainLoading from '../loading/MainLoading'
+import EmptyScreen from './EmptyScreen'
 
 const BlogLayout = () => {
   const dispatch = useDispatch()
@@ -58,14 +60,18 @@ const BlogLayout = () => {
         <HStack minH="90vh" w="full" alignItems="flex-start">
           {/* POST LIST */}
           <Box minH="80vh" minW="30vh" flex={1}>
-            {loading
-              ? 'perate mijo'
-              : posts.results.map((post) => (
-                  <article key={post.id}>
-                    <BlogPost post={post} />
-                  </article>
-                ))}
-            {loading ? 'perate tantito' : <Paginator posts={posts} />}
+            {loading ? (
+              <MainLoading />
+            ) : posts.results.length > 0 ? (
+              posts.results.map((post) => (
+                <article key={post.id}>
+                  <BlogPost post={post} />
+                </article>
+              ))
+            ) : (
+              <EmptyScreen />
+            )}
+            {loading ? '' : <Paginator posts={posts} />}
           </Box>
           {/* SIDENAV */}
           <VStack
@@ -111,10 +117,10 @@ const BlogLayout = () => {
 
 const popularTopics = [
   'python',
-  'react',
+  'javascript',
   'nextjs',
   'django',
-  'express',
+  'react',
   'nodejs',
 ]
 

@@ -1,3 +1,5 @@
+import { Heading } from '@chakra-ui/react'
+
 const MainLoading = () => {
   return (
     <>
@@ -8,8 +10,7 @@ const MainLoading = () => {
             className="loadingLogo"
             alt="logo"
           />
-
-          <p>Cargando...</p>
+          <Heading>Cargando...</Heading>
         </header>
       </div>
     </>

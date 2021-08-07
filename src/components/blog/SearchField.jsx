@@ -6,7 +6,7 @@ import { setLoading, setPosts, setCurrentPaginatorPage } from './blogSlice'
 import { useDispatch } from 'react-redux'
 const SearchField = () => {
   const dispatch = useDispatch()
-  const [searchValue, setSearchValue] = useState()
+  const [searchValue, setSearchValue] = useState('')
   const searchFormSubmitHandler = async (e) => {
     e.preventDefault()
     dispatch(setLoading(true))
