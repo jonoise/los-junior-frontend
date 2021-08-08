@@ -29,7 +29,7 @@ const LikeHearOffline = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton className="disableFocus" />
           <ModalBody>
             <Flex direction={['column', 'column', 'row']}>
               <Image
