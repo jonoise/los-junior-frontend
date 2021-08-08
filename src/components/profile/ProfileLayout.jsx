@@ -19,12 +19,12 @@ const ProfileLayout = ({ profile }) => {
           maxW={{ base: 'full', lg: 'xs', xl: 'sm' }}
           direction="column"
         >
-          <UserInfo {...profile} />
+          <UserInfo profile={profile} />
         </Flex>
 
         {/* USER ACTIVITY */}
         <Flex w="full" minH="full">
-          <UserActivity />
+          <UserActivity profile={profile} />
         </Flex>
       </Flex>
     </>

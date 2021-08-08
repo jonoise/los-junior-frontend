@@ -8,21 +8,29 @@ import {
   Tab,
   TabPanel,
 } from '@chakra-ui/react'
-const MainFrame = () => {
+import UserActivityOverview from './Overview/UserActivityOverview'
+const UserActivity = ({ profile }) => {
   return (
-    <Stack h="full" w="full">
-      {/* ACTIVITY */}
-      <Flex h="full" w="full" direction="column">
-        <Flex bg="beige" h="50%">
-          <Text>PARARAPÁ</Text>
-        </Flex>
+    <Tabs w="full">
+      <TabList>
+        <Tab className="disableFocus">Overview</Tab>
+        <Tab className="disableFocus">Páginas</Tab>
+        <Tab className="disableFocus">Posts</Tab>
+      </TabList>
 
-        <Flex bg="firebrick" h="50%">
-          <Text>PARARAPÁ</Text>
-        </Flex>
-      </Flex>
-    </Stack>
+      <TabPanels>
+        <TabPanel>
+          <UserActivityOverview profile={profile} />
+        </TabPanel>
+        <TabPanel>
+          <p>two!</p>
+        </TabPanel>
+        <TabPanel>
+          <p>three!</p>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   )
 }
 
-export default MainFrame
+export default UserActivity

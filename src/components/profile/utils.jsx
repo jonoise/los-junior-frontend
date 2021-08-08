@@ -29,7 +29,6 @@ import { FaNodeJs, FaPhp } from 'react-icons/fa'
 const parsingTech = (string_of_techs) => {
   if (string_of_techs) {
     const array_of_ids = string_of_techs.split(',')
-    console.log(typeof array_of_ids[0], array_of_ids[0])
     return array_of_ids
   }
 }

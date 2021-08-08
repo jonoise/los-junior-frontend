@@ -10,7 +10,8 @@ import React from 'react'
 import { mappingTech } from '../utils'
 import { useSession } from 'next-auth/client'
 import InfoNameAndTitle from './InfoNameAndTitle'
-function UserInfo({ name, username, github_url, image, technologies, title }) {
+function UserInfo({ profile }) {
+  const { name, username, image, technologies, title } = profile
   const [session, loading] = useSession()
   const techStack = mappingTech(technologies)
 
