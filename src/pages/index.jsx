@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <GenericHead
-        title={'Home 🏡 - Bienvenido a Los Junior.'}
+        title={'Los Junior'}
         description="Únete a Los Junior. Toma el camino del aprendiz, conviértete en desarrollador de software y hazte un nombre en la comunidad mientras aprendes cosas nuevas."
         type="home"
         url="https://losjunior.co"
