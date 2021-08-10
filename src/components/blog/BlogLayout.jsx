@@ -18,8 +18,10 @@ import {
   selectPosts,
   selectPostsLoading,
   selectCurrentPaginatorPage,
+  selectSearching,
   setPosts,
   setLoading,
+  selectSearchQueryValue,
 } from './blogSlice'
 import SearchField from './SearchField'
 import MainLoading from '../loading/MainLoading'
@@ -30,9 +32,13 @@ const BlogLayout = () => {
   const currentPaginatorPage = useSelector(selectCurrentPaginatorPage)
   const posts = useSelector(selectPosts)
   const loading = useSelector(selectPostsLoading)
+  const isSearching = useSelector(selectSearching)
+  const search_query = useSelector(selectSearchQueryValue)
 
-  const fetchBlogPosts = async (currentPaginatorPage) => {
-    const url = `${API_BASE_URL}/blog/posts/?page=${currentPaginatorPage}`
+  const fetchBlogPosts = async (currentPaginatorPage, search_query) => {
+    const url = isSearching
+      ? `${API_BASE_URL}/blog/search/${search_query}?page=${currentPaginatorPage}`
+      : `${API_BASE_URL}/blog/posts/?page=${currentPaginatorPage}`
     const res = await axios.get(url, {
       headers: {
         'content-type': 'application/json',
@@ -50,7 +56,7 @@ const BlogLayout = () => {
       top: 0,
       left: 0,
     })
-    fetchBlogPosts(currentPaginatorPage)
+    fetchBlogPosts(currentPaginatorPage, search_query)
   }, [currentPaginatorPage])
 
   return (
@@ -101,7 +107,7 @@ const BlogLayout = () => {
               >
                 {popularTopics.map((topic) => (
                   <Box className="topic" key={topic} mx={3}>
-                    <Link href={`/blog/tags/${topic}`}>
+                    <Link href={`/blog/?search=${topic}`}>
                       <Text cursor="pointer">{topic}</Text>
                     </Link>
                   </Box>
