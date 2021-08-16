@@ -11,6 +11,7 @@ import {
   Avatar,
 } from '@chakra-ui/react'
 import dateStringify from '../../lib/dateStringify'
+import BlogPostTag from './BlogPostTag'
 function BlogPost({ post }) {
   return (
     <Flex
@@ -42,20 +43,7 @@ function BlogPost({ post }) {
           </chakra.span>
           <HStack>
             {post.tags.map((tag) => (
-              <Link
-                href={`/blog/tags/${tag}`}
-                px={3}
-                py={1}
-                bg="gray.600"
-                color="gray.100"
-                fontSize={['10px', 'sm']}
-                fontWeight="700"
-                rounded="md"
-                _hover={{ bg: 'gray.500' }}
-                key={tag}
-              >
-                {tag}
-              </Link>
+              <BlogPostTag tag={tag} key={tag} />
             ))}
           </HStack>
         </Flex>
