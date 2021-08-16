@@ -1,13 +1,5 @@
 import { useEffect, useState } from 'react'
-import {
-  HStack,
-  Container,
-  Box,
-  VStack,
-  Flex,
-  Text,
-  Link,
-} from '@chakra-ui/react'
+import { Container, Box, VStack, Flex } from '@chakra-ui/react'
 import { API_BASE_URL } from '../../constants'
 import Navbar from '../navbar/NavApp'
 import BlogPost from './BlogPost'
@@ -23,9 +15,13 @@ import {
   setLoading,
   selectSearchQueryValue,
 } from './blogSlice'
-import SearchField from './SearchField'
+
+import SearchField from './Sidebar/SearchField'
 import MainLoading from '../loading/MainLoading'
 import EmptyScreen from './EmptyScreen'
+import PopularTopics from './Sidebar/PopularTopics'
+import MostLiked from './Sidebar/MostLiked'
+import Newsletter from './Sidebar/Newsletter'
 
 const BlogLayout = () => {
   const dispatch = useDispatch()
@@ -63,7 +59,7 @@ const BlogLayout = () => {
     <>
       <Navbar />
       <Container maxW="container.xl">
-        <HStack minH="90vh" w="full" alignItems="flex-start">
+        <Flex minH="90vh" w="full" direction={{ base: 'column', lg: 'row' }}>
           {/* POST LIST */}
           <Box minH="80vh" minW="30vh" flex={1}>
             {loading ? (
@@ -81,53 +77,21 @@ const BlogLayout = () => {
           </Box>
           {/* SIDENAV */}
           <VStack
-            pt={10}
-            pr={10}
+            pt={{ base: 0, lg: 10 }}
+            pr={{ base: 0, lg: 10 }}
             minH="90vh"
-            minW={{ base: '15rem', lg: '20rem', xl: '25rem' }}
-            display={['none', 'none', 'flex']}
+            minW={{ base: 'full', lg: '20rem', xl: '25rem' }}
           >
             <SearchField />
-            <Flex
-              boxShadow="lg"
-              p="6"
-              w="full"
-              alignItems="center"
-              direction="column"
-            >
-              <Text fontWeight="bold" fontSize="xl" my={2} color="teal.300">
-                Los más populares 😎
-              </Text>
-              <Flex
-                wrap="wrap"
-                maxW="15rem"
-                minH="5rem"
-                justifyContent="space-around"
-                alignItems="center"
-              >
-                {popularTopics.map((topic) => (
-                  <Box className="topic" key={topic} mx={3}>
-                    <Link href={`/blog/?search=${topic}`}>
-                      <Text cursor="pointer">{topic}</Text>
-                    </Link>
-                  </Box>
-                ))}
-              </Flex>
-            </Flex>
+            <PopularTopics />
+            <Newsletter />
+
+            <MostLiked />
           </VStack>
-        </HStack>
+        </Flex>
       </Container>
     </>
   )
 }
-
-const popularTopics = [
-  'python',
-  'javascript',
-  'nextjs',
-  'django',
-  'react',
-  'nodejs',
-]
 
 export default BlogLayout
