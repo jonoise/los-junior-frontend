@@ -12,7 +12,7 @@ function HeadApp(props) {
       <meta property="og:type" content="article" />
       <meta
         property="og:url"
-        content={`https://losjunior.co/blog/posts/${slug}`}
+        content={`https://losjunior.co/blog/post/${slug}`}
       />
 
       <meta property="og:description" content={abstract} />
