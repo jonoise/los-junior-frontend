@@ -1,50 +1,38 @@
 import { Flex, VStack, Text } from '@chakra-ui/react'
 import CountBox from './CountBox'
-import TopFive from './TopFive'
+import ListDisplay from './ListDisplay'
+import TagSearchDisplay from './TagSearchDisplay'
 
 const UserActivityOverview = ({ profile }) => {
-  const { pagesCount, postsCount, postsTopFive } = profile
+  const { pagesCount, postsCount, postsTopFive, tagsMostUsed } = profile
   return (
-    // MAIN FRAME
     <Flex minH="70vh" w="full" direction={{ base: 'column', lg: 'row' }}>
       {/* POST COUNTER */}
-      <VStack w={{ base: '100%', lg: '25%' }} minH="full" py="3" px="1">
+      <VStack w={{ base: '100%', lg: '33%' }} minH="full" py="3" px="1">
         <CountBox
           title={'Posts Counter'}
           count={postsCount}
           description={'Posts publicados.'}
         />
-        <TopFive title={'Post más gustados'} top_five={postsTopFive} />
+        <TagSearchDisplay
+          title={'Temas destacados 🌟'}
+          list={tagsMostUsed}
+          blogSearch={true}
+        />
       </VStack>
 
       {/* PAGES COUNTER */}
-      <VStack w={{ base: '100%', lg: '25%' }} minH="full" py="3" px="1">
+      <VStack w={{ base: '100%', lg: '33%' }} minH="full" py="3" px="1">
         <CountBox
           title={'Pages Counter'}
           count={pagesCount}
-          description={'Páginas publicadas.'}
+          description={'Páginas creadas.'}
         />
-        <TopFive title={'Post más gustados'} top_five={postsTopFive} />
       </VStack>
 
-      {/* POST COUNTER */}
-      <VStack w={{ base: '100%', lg: '25%' }} minH="full" py="3" px="1">
-        <CountBox
-          title={'Pages Counter'}
-          count={pagesCount}
-          description={'Páginas publicadas.'}
-        />
-        <TopFive title={'Post más gustados'} top_five={postsTopFive} />
-      </VStack>
-
-      {/* POST COUNTER */}
-      <VStack w={{ base: '100%', lg: '25%' }} minH="full" py="3" px="1">
-        <CountBox
-          title={'Pages Counter'}
-          count={postsCount}
-          description={'Páginas publicadas.'}
-        />
-        <TopFive title={'Post más gustados'} top_five={postsTopFive} />
+      {/* TAGS COUNTER */}
+      <VStack w={{ base: '100%', lg: '33%' }} minH="full" py="3" px="1">
+        <ListDisplay title={'Post más gustados'} list={postsTopFive} />
       </VStack>
     </Flex>
   )

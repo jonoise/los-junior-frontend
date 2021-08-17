@@ -19,6 +19,7 @@ const CountBox = (props) => {
         fontFamily="Montserrat"
         fontWeight="semibold"
         lineHeight="1"
+        transition=".3s all"
       >
         {count}
       </Text>
