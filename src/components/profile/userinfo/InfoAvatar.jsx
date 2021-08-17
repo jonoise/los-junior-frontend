@@ -12,11 +12,11 @@ const InfoAvatar = ({ image }) => {
       borderTopColor={useColorModeValue('gray.300', 'gray.700')}
       borderBottomColor={useColorModeValue('gray.300', 'gray.700')}
     >
-      <AvatarBadge boxSize={9} borderWidth={4} bg="gray.900">
+      {/* <AvatarBadge boxSize={9} borderWidth={4} bg="gray.900" right="2">
         <Text fontSize="1rem" color="white">
           👋
         </Text>
-      </AvatarBadge>
+      </AvatarBadge> */}
     </Avatar>
   )
 }

@@ -1,12 +1,16 @@
-const InfoStack = () => {
+import { HStack } from '@chakra-ui/react'
+import { mappingTech } from '../utils'
+
+const InfoStack = ({ technologies }) => {
+  const techStack = mappingTech(technologies)
   return (
-    <div>
+    <HStack spacing="6">
       {techStack
         ? techStack.map((tech) => {
-            return tech.icon
+            return <div key={tech.id}>{tech.icon}</div>
           })
         : ''}
-    </div>
+    </HStack>
   )
 }
 

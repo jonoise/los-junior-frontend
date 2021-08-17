@@ -10,10 +10,10 @@ import React from 'react'
 import { mappingTech } from '../utils'
 import { useSession } from 'next-auth/client'
 import InfoNameAndTitle from './InfoNameAndTitle'
+import InfoStack from './InfoStack'
 function UserInfo({ profile }) {
   const { name, username, image, technologies, title } = profile
   const [session, loading] = useSession()
-  const techStack = mappingTech(technologies)
 
   return (
     <VStack p="5" w="full" h="full" spacing="5">
@@ -26,16 +26,13 @@ function UserInfo({ profile }) {
             return <StackIcon item={item} key={item.id} />
           })}
         </HStack>
-        <Text mt="6">My stack</Text>
-        <HStack spacing="10" mt="5">
-          {/* TODO: FIX ME */}
-        </HStack>
+        <VStack>
+          <Text mt="6">My stack</Text>
+          <InfoStack technologies={technologies} />
+        </VStack>
       </Flex>
       <VStack h="full" w="full">
-        <Text as="i" color="gray.500">
-          Agrega tu currículum y certs.
-        </Text>
-        <Button
+        {/* <Button
           w="full"
           type="submit"
           bg={'blue.400'}
@@ -45,7 +42,7 @@ function UserInfo({ profile }) {
           }}
         >
           Agregar currículum
-        </Button>
+        </Button> */}
       </VStack>
     </VStack>
   )
