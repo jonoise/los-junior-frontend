@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/client'
 import Loading from '../loading/MainLoading'
 import Navbar from '../navbar/NavApp'
+import Footer from '../footer/FooterLayout'
 import HomeAnonymous from './HomeAnonymous/HomeAnonApp'
 import HomeAuthenticated from './HomeAuthenticated/HomeAuthApp'
 
@@ -12,6 +13,7 @@ const HomeLayout = () => {
       {!loading && !session && <HomeAnonymous />}
       {!loading && session && <HomeAuthenticated />}
       {loading && <Loading />}
+      <Footer />
     </>
   )
 }
