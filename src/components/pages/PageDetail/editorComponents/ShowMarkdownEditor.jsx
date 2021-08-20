@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { selectPage, updateComponent } from '../../../../app/pageSlice'
-import {
-  selectPageSettings,
-  setUnsavedChanges,
-} from '../../../../app/pageSettings'
+import { selectPage, updateComponent } from '../../pageSlice'
+import { selectPageSettings, setUnsavedChanges } from '../../pageSettingsSlice'
 import Editor from '@monaco-editor/react'
 import { useEffect, useRef } from 'react'
 

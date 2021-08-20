@@ -1,7 +1,7 @@
 import HideEditor from './editorComponents/HideEditor'
 import ShowEditor from './editorComponents/ShowEditor'
 import { useSelector } from 'react-redux'
-import { selectPageSettings } from '../../../app/pageSettings'
+import { selectPageSettings } from '../pageSettingsSlice'
 import EditorNav from './editorComponents/EditorNav'
 
 function Editor() {

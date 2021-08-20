@@ -12,12 +12,8 @@ import { useSession } from 'next-auth/client'
 import { useEffect, useRef, useState } from 'react'
 import { AiFillPlusSquare } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectPageSettings } from '../../../../app/pageSettings'
-import {
-  addComponent,
-  selectPage,
-  updateComponent,
-} from '../../../../app/pageSlice'
+import { selectPageSettings } from '../../pageSettingsSlice'
+import { addComponent, selectPage, updateComponent } from '../../pageSlice'
 import axios from '../../../../lib/axios'
 
 const ShowTodoEditor = ({ displayEditor }) => {
@@ -28,18 +24,27 @@ const ShowTodoEditor = ({ displayEditor }) => {
   const page = useSelector(selectPage)
   const { currentComponentId } = useSelector(selectPageSettings)
   const [todoComponent, setTodoComponent] = useState(null)
-  const [currentChangingInput, setCurrentChangingInput] = useState({uuid:undefined, content: undefined})
-  
+
+  const [currentChangingInput, setCurrentChangingInput] = useState({
+    uuid: undefined,
+    content: undefined,
+  })
+
   useEffect(() => {
+    console.log(page)
     setTodoComponent(page.components[currentComponentId])
   }, [page.components])
 
-  
   useEffect(() => {
     // This use effect handle POST requests to DB everytime a task is updated
     // it uses a setTimeout to await some time while the use is typing.
-    const timeout = setTimeout(()=>{
-      axios('PATCH', `pages/todos/tasks/${currentChangingInput.uuid}`, {content: currentChangingInput.content, type_of: "task"}, session)
+    const timeout = setTimeout(() => {
+      axios(
+        'PATCH',
+        `pages/todos/tasks/${currentChangingInput.uuid}`,
+        { content: currentChangingInput.content, type_of: 'task' },
+        session
+      )
     }, 800)
 
     return () => clearTimeout(timeout)
@@ -72,7 +77,7 @@ const ShowTodoEditor = ({ displayEditor }) => {
       },
       tasksIds: [...todoComponent.tasksIds, newTask.uuid],
     })
-    axios("POST", `pages/todos/${todoComponent.uuid}/tasks/`, newTask, session)
+    axios('POST', `pages/todos/${todoComponent.uuid}/tasks/`, newTask, session)
   }
 
   const handleTaskInputChange = (e) => {
@@ -86,13 +91,15 @@ const ShowTodoEditor = ({ displayEditor }) => {
         },
       },
     })
-    
+
     // Setting the currentChangingInput for the useEffect
-    setCurrentChangingInput({uuid: e.target.id, content: e.target.value})
+    setCurrentChangingInput({ uuid: e.target.id, content: e.target.value })
   }
 
   const saveEditTodo = () => {
+    console.log(todoComponent.tasks)
     for (let taskId in todoComponent.tasks) {
+      console.log(taskId)
       if (todoComponent.tasks[taskId].content === '') {
         toast({
           title: 'Hay tareas incompletas.',
@@ -110,7 +117,6 @@ const ShowTodoEditor = ({ displayEditor }) => {
       component: todoComponent,
     }
     dispatch(updateComponent(payload))
-    console.log(todoComponent)
   }
 
   return (

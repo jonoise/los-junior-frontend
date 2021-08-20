@@ -28,7 +28,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { checkPercentages } from './gradeUtilities'
 import { AiFillPlusSquare } from 'react-icons/ai'
 
-import { addComponent } from '../../../../app/pageSlice'
+import { addComponent } from '../../pageSlice'
 import { useDispatch } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { FaGraduationCap, FaRegQuestionCircle } from 'react-icons/fa'

@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { v4 as uuid_v4 } from 'uuid'
 import { AiFillFileMarkdown } from 'react-icons/ai'
-import { addComponent, selectPage } from '../../../../app/pageSlice'
+import { addComponent, selectPage } from '../../pageSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSession } from 'next-auth/client'
 import axios from '../../../../lib/axios'

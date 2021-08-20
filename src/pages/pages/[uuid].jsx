@@ -5,8 +5,8 @@ import dynamic from 'next/dynamic'
 import Sidebar from '../../components/pages/PageDetail/Sidebar'
 import Editor from '../../components/pages/PageDetail/Editor'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadPage } from '../../app/pageSlice'
-import { selectPageSettings } from '../../app/pageSettings'
+import { loadPage } from '../../components/pages/pageSlice'
+import { selectPageSettings } from '../../components/pages/pageSettingsSlice'
 import { getSession, providers } from 'next-auth/client'
 import axios from '../../lib/axios'
 import { API_BASE_URL } from '../../constants'
@@ -25,6 +25,7 @@ function PageDetail(props) {
   useEffect(() => {
     dispatch(loadPage(page))
   }, [page])
+
   return (
     <>
       <NavApp />

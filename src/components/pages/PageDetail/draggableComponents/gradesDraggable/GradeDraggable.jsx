@@ -1,4 +1,4 @@
-import { selectPage, updateComponent } from '../../../../../app/pageSlice'
+import { selectPage, updateComponent } from '../../../pageSlice'
 import { useSelector } from 'react-redux'
 import {
   Table,

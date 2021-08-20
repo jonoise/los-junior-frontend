@@ -1,5 +1,5 @@
 import { Draggable } from 'react-beautiful-dnd'
-import { selectPage } from '../../../../../app/pageSlice'
+import { selectPage } from '../../../pageSlice'
 import { useSelector } from 'react-redux'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
@@ -10,7 +10,6 @@ import ComponentHandler from '../handler/ComponentHandler'
 function MarkdownDraggable({ uuid, provided }) {
   const page = useSelector(selectPage)
   const activeComponent = page.components[uuid]
-  console.log(page)
 
   return (
     <>

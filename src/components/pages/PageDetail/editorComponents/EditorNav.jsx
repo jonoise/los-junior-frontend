@@ -13,7 +13,7 @@ import {
   toggleEditor,
   selectPageSettings,
   setEditor,
-} from '../../../../app/pageSettings'
+} from '../../pageSettingsSlice'
 function EditorNav() {
   const dispatch = useDispatch()
   const pageSettings = useSelector(selectPageSettings)

@@ -11,13 +11,13 @@ import {
 } from '@chakra-ui/react'
 import { FaGripHorizontal, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectPage, removeComponent } from '../../../../../app/pageSlice'
+import { selectPage, removeComponent } from '../../../pageSlice'
 import {
   selectPageSettings,
   setEditor,
   setEditorIsOpen,
   toggleEditor,
-} from '../../../../../app/pageSettings'
+} from '../../../pageSettingsSlice'
 import axios from '../../../../../lib/axios'
 import { useSession } from 'next-auth/client'
 

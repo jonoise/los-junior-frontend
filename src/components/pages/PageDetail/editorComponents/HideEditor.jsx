@@ -1,7 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectPageSettings, toggleEditor } from '../../../../app/pageSettings'
+import { selectPageSettings, toggleEditor } from '../../pageSettingsSlice'
 const HideEditor = () => {
   // ↓ SMOOTH EDITOR DISPLAY STATE ↓
   const [displayEditor, setDisplayEditor] = useState(false)

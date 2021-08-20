@@ -20,7 +20,7 @@ import { nanoid } from 'nanoid'
 
 import { AiOutlineUnorderedList, AiFillPlusSquare } from 'react-icons/ai'
 
-import { addComponent, selectPage } from '../../../../app/pageSlice'
+import { addComponent, selectPage } from '../../pageSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import axios from '../../../../lib/axios'
@@ -71,7 +71,7 @@ function TodoModal() {
           tasksIds: [],
         },
       }
-    }
+    },
   }
   const [todoComponent, setTodoComponent] = useState(initialTodo)
 
@@ -80,7 +80,7 @@ function TodoModal() {
       uuid: nanoid(20),
       content: '',
       status: 'pending',
-      type_of: 'task'
+      type_of: 'task',
     }
     setTodoComponent({
       ...todoComponent,
@@ -125,6 +125,7 @@ function TodoModal() {
 
   const addToState = () => {
     for (let taskId in todoComponent.tasks) {
+      console.log(taskId)
       if (todoComponent.tasks[taskId].content === '') {
         toast({
           title: 'Hay tareas incompletas.',
@@ -154,14 +155,14 @@ function TodoModal() {
     // Cada vez que creemos un nuevo Task vamos a hacerle focus al input.
     console.log(todoComponent.tasksIds[todoComponent.tasksIds.length - 1])
     console.log(todoComponent)
-    const last_target = document
-      .getElementById(todoComponent.tasksIds[todoComponent.tasksIds.length - 1])
-    
-      // Prevents to focus an unexisting target, everytime a new Task is created 
-      if (last_target) {
+    const last_target = document.getElementById(
+      todoComponent.tasksIds[todoComponent.tasksIds.length - 1]
+    )
+
+    // Prevents to focus an unexisting target, everytime a new Task is created
+    if (last_target) {
       last_target.focus()
     }
-
   }, [todoComponent.tasksIds])
   return (
     <>

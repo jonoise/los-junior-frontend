@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectPage, reorderColumn } from '../../../app/pageSlice'
+import { selectPage, reorderColumn } from '../pageSlice'
 import { Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { Flex, useColorModeValue, VStack } from '@chakra-ui/react'
 import DraggableComponent from './DraggableComponent'
@@ -9,6 +9,7 @@ function View() {
   const dispatch = useDispatch()
   const page = useSelector(selectPage)
   const [dragging, setDragging] = useState(false)
+
   const onDragStart = (start) => {
     setDragging(true)
   }

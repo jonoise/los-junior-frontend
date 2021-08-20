@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectPage, updateComponent } from '../../../../../app/pageSlice'
+import { selectPage, updateComponent } from '../../../pageSlice'
 import ComponentHandler from '../handler/ComponentHandler'
 import Column from './Column'
 const TodoDraggable = ({ uuid, provided }) => {
@@ -67,10 +67,10 @@ const TodoDraggable = ({ uuid, provided }) => {
     // This will handle the change between the same column.
     const col = todoComponent.columns[source.droppableId]
     const newTasksList = Array.from(col.tasksIds)
-    
+
     newTasksList.splice(source.index, 1)
     newTasksList.splice(destination.index, 0, draggableId)
-    
+
     const newCol = {
       ...col,
       tasksIds: newTasksList,
@@ -89,7 +89,6 @@ const TodoDraggable = ({ uuid, provided }) => {
     }
     dispatch(updateComponent(payload))
   }
-  console.log(todoComponent)
   return (
     <>
       <Flex {...provided.draggableProps} ref={provided.innerRef} mb="2.5rem">
