@@ -27,7 +27,7 @@ export default function JoinOurTeam() {
         maxW={'7xl'}
         columns={{ base: 1, md: 1, lg: 2 }}
         spacing={{ base: 10, lg: 25, xl: 40 }}
-        py={{ base: 5, sm: 10, md: '50px', lg: '70px', xl: '50px' }}
+        py={{ base: 5, sm: 10, md: '50px', lg: '70px', xl: '90px' }}
       >
         <Stack spacing={{ base: 10, md: 20 }}>
           <Heading
@@ -42,7 +42,7 @@ export default function JoinOurTeam() {
             >
               Googlea
             </Text>{' '}
-            como Senior.
+            como senior.
             <Text
               fontSize={{ base: 'lg', sm: 'lg', md: 'xl', lg: 'xl' }}
               py="8"
@@ -99,8 +99,16 @@ export default function JoinOurTeam() {
           </VStack>
           <Text color={'gray.500'} fontSize={{ base: 'xs', sm: 'sm' }}>
             FAQ: <br />
-            Qué es Github? Saber más <br />
-            Por qué solo con Github? Saber más
+            Qué es Github?{' '}
+            <Link href="#login-info" color="red">
+              Saber más
+            </Link>{' '}
+            <br />
+            Por qué solo con Github?{' '}
+            <Link href="#login-info" color="red">
+              {' '}
+              Saber más
+            </Link>
           </Text>
         </Stack>
       </Container>
