@@ -1,14 +1,17 @@
 import { Flex } from '@chakra-ui/react'
+import { useSession } from 'next-auth/client'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectPage, updateComponent } from '../../../pageSlice'
 import ComponentHandler from '../handler/ComponentHandler'
 import Column from './Column'
+import { reorderColumnsRequest } from './reorderColumns'
 const TodoDraggable = ({ uuid, provided }) => {
   // COMPONENT TYPE_: TODO
   const dispatch = useDispatch()
   const page = useSelector(selectPage)
   const todoComponent = page.components[uuid] //uuid === todoComponentId
+  const [session] = useSession()
 
   const onDragEnd = (result) => {
     const { source, destination, draggableId } = result
@@ -60,6 +63,7 @@ const TodoDraggable = ({ uuid, provided }) => {
         },
       }
       console.log(payload)
+      reorderColumnsRequest(payload, session)
       dispatch(updateComponent(payload))
       return
     }
