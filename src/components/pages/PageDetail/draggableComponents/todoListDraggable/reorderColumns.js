@@ -5,7 +5,7 @@ import axios from "../../../../../lib/axios"
 
 
 // Request to reorder when tasks change between columns
-export const reorderColumnsRequest = async (payload, session) => {
+export const reorderSwitchColumnsRequest = async (payload, session) => {
     const todoComponent = payload.component
 
     // get columns
@@ -17,8 +17,22 @@ export const reorderColumnsRequest = async (payload, session) => {
         pending_tasksIds: pending_column.tasksIds,
         completed_tasksIds: completed_column.tasksIds
     }
-    const res = await axios('PATCH', `/pages/todos/${todoComponent.uuid}/`, patch_object, session)
-    console.log(res)
+    await axios('PATCH', `/pages/todos/${todoComponent.uuid}/`, patch_object, session)
 }
 
 // Request to reorder when tasks stay in the same column
+export const reorderSameColumnRequest = async (todoComponent, newCol, session) => {
+
+    //make request
+    let patch_object = {}
+    if (newCol.id === 'pending_tasks') {
+        patch_object = {
+            'pending_tasksIds': newCol.tasksIds
+        }
+    } else {
+        patch_object = {
+            'completed_tasksIds': newCol.tasksIds
+        }
+    }
+    await axios('PATCH', `/pages/todos/${todoComponent.uuid}/`, patch_object, session)
+}

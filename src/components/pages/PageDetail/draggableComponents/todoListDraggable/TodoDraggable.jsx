@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectPage, updateComponent } from '../../../pageSlice'
 import ComponentHandler from '../handler/ComponentHandler'
 import Column from './Column'
-import { reorderColumnsRequest } from './reorderColumns'
+import {
+  reorderSwitchColumnsRequest,
+  reorderSameColumnRequest,
+} from './reorderColumns'
 const TodoDraggable = ({ uuid, provided }) => {
   // COMPONENT TYPE_: TODO
   const dispatch = useDispatch()
@@ -63,7 +66,7 @@ const TodoDraggable = ({ uuid, provided }) => {
         },
       }
       console.log(payload)
-      reorderColumnsRequest(payload, session)
+      reorderSwitchColumnsRequest(payload, session)
       dispatch(updateComponent(payload))
       return
     }
@@ -91,6 +94,7 @@ const TodoDraggable = ({ uuid, provided }) => {
       uuid: newTodoList.uuid,
       component: newTodoList,
     }
+    reorderSameColumnRequest(todoComponent, newCol, session)
     dispatch(updateComponent(payload))
   }
   return (
