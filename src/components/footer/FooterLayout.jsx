@@ -47,19 +47,25 @@ export default function LargeWithLogoLeft() {
             <Text fontSize={'sm'}>© 2021 - Somos Los Junior</Text>
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Support</ListHeader>
+            <Text color="green.500" fontWeight="bold" fontSize="larger">
+              Support
+            </Text>
             <Link href={'#'}>Contacto</Link>
             <Link href={'#'}>Términos de servicio</Link>
             <Link href={'#'}>Términos de privacidad</Link>
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Producto</ListHeader>
+            <Text color="green.500" fontWeight="bold" fontSize="larger">
+              Producto
+            </Text>
             <Link href={'#'}>Overview</Link>
             <Link href={'#'}>Features</Link>
             <Link href={'#'}>Tutorials</Link>
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Síguenos</ListHeader>
+            <Text fontWeight="bold" color="green.500" fontSize="larger">
+              Síguenos
+            </Text>
             <Link href={'#'}>Facebook</Link>
             <Link href={'#'}>Twitter</Link>
             <Link href={'#'}>Instagram</Link>
