@@ -43,6 +43,7 @@ function TodoModal() {
   const didMount = useDidMount()
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
+
   // We are getting this position from the carousel.
 
   const initialTaskId = nanoid(20)
@@ -73,6 +74,7 @@ function TodoModal() {
       }
     },
   }
+
   const [todoComponent, setTodoComponent] = useState(initialTodo)
 
   const createNewTask = () => {
@@ -124,11 +126,20 @@ function TodoModal() {
   }
 
   const addToState = () => {
-    for (let taskId in todoComponent.tasks) {
-      console.log(taskId)
-      if (todoComponent.tasks[taskId].content === '') {
+    for (let taskId in todoComponent.tasksComponents) {
+      if (todoComponent.tasksComponents[taskId].content === '') {
         toast({
           title: 'Hay tareas incompletas.',
+          description: 'Asegúrate de rellenar todos los espacios.',
+          id: taskId,
+          duration: 5000,
+          status: 'error',
+        })
+        return
+      }
+      if (todoComponent.title === '') {
+        toast({
+          title: 'Completa el título.',
           description: 'Asegúrate de rellenar todos los espacios.',
           id: taskId,
           duration: 5000,
@@ -147,6 +158,7 @@ function TodoModal() {
   }
 
   useEffect(() => {
+    console.log(page)
     if (didMount) {
       // Si el component se acaba de montar,
       // no vamos a efectuar ninguna acción. Solo on re-renders
