@@ -23,7 +23,11 @@ function GradeDraggable({ id, provided }) {
     <>
       <Flex {...provided.draggableProps} ref={provided.innerRef} mb="2.5rem">
         {/* HANDLER/CRUD */}
-        <ComponentHandler id={id} provided={provided} />
+        <ComponentHandler
+          id={id}
+          provided={provided}
+          uuid={gradeComponent.uuid}
+        />
         {/* GRADE COMPONEN */}
         <Flex px="5" w="full" h="full" direction="column">
           <Text fontSize="2xl" fontWeight="bold" mb="5">

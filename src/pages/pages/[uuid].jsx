@@ -29,7 +29,7 @@ function PageDetail(props) {
   return (
     <>
       <NavApp />
-      <HStack h="96vh" py="5" px="2">
+      <HStack h="100vh" py="5" px="2">
         <Flex
           w="full"
           h="full"

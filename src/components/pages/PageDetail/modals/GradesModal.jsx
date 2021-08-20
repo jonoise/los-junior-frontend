@@ -42,7 +42,6 @@ function GradesModal() {
   const nanoid = customAlphabet('1234567890abcdef', 10)
 
   const dispatch = useDispatch()
-  const didMount = useDidMount()
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
   // Initial Grade Object
@@ -117,10 +116,10 @@ function GradesModal() {
 
   const addToState = () => {
     for (let i in gradeComponent.evaluationsIds) {
+      // We use this variables for warning displays
       const eval_ID = gradeComponent.evaluationsIds[i]
       const currentEvaluation = gradeComponent.evaluations[eval_ID]
       const validPercetages = checkPercentages(gradeComponent)
-      console.log(gradeComponent)
 
       if (gradeComponent.course === '') {
         toast({
