@@ -284,40 +284,28 @@ const NAV_ITEMS = [
     //   },
     // ],
   },
-  // {
-  //   id: 2,
-  //   label: 'Páginas',
-  //   href: '/pages',
-  //   children: [
-  //     {
-  //       label: 'Vuélvete un Junior',
-  //       subLabel: 'Toma nuestros cursos gratis',
-  //       href: '/cursos',
-  //     },
-  //     {
-  //       label: 'WebDev Masterclass',
-  //       subLabel: 'La guía definitiva para ser junior',
-  //       href: '/masterclass',
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: 3,
-  //   label: 'Mantra',
-  //   href: '/mantra',
-  //   children: [
-  //     {
-  //       label: 'Fetch1',
-  //       subLabel: 'Testing the API',
-  //       href: '/test1',
-  //     },
-  //     {
-  //       label: 'WebDev Masterclass',
-  //       subLabel: 'Testing the API',
-  //       href: '/test2',
-  //     },
-  //   ],
-  // },
+  {
+    id: 2,
+    label: 'Páginas',
+    href: '/pages',
+  },
+  {
+    id: 3,
+    label: 'Mantra',
+    href: '/mantra',
+    // children: [
+    //   {
+    //     label: 'Fetch1',
+    //     subLabel: 'Testing the API',
+    //     href: '/test1',
+    //   },
+    //   {
+    //     label: 'WebDev Masterclass',
+    //     subLabel: 'Testing the API',
+    //     href: '/test2',
+    //   },
+    // ],
+  },
 ]
 
 export default WithSubnavigation
