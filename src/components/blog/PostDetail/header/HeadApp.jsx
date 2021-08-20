@@ -16,7 +16,10 @@ function HeadApp(props) {
       />
 
       <meta property="og:description" content={abstract} />
-      <meta property="og:image" content={thumbnail} />
+      <meta
+        property="og:image"
+        content="https://user-images.githubusercontent.com/71573508/130300903-ffa07af8-98fd-47cb-9f98-66b10afcedcf.png"
+      />
     </Head>
   )
 }
