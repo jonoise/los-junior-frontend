@@ -1,14 +1,12 @@
 import Hero from './Hero'
-import KnowMore from './KnowMore'
+import Footer from '../../../footer/FooterLayout'
 const PageAnonApp = () => {
   return (
     <>
       <div id="hero">
         <Hero />
       </div>
-      <div id="know-more">
-        <KnowMore />
-      </div>
+      <Footer />
     </>
   )
 }

@@ -75,7 +75,7 @@ const Hero = () => {
           </Button>
         </Stack>
       </Stack>
-      <Stack align="center" justify="center">
+      <Stack align="center" justify="center" mb="10">
         {pagesFeatures.map((feature) => {
           return (
             <HStack key={feature.id} align={'top'}>
