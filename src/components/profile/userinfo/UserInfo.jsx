@@ -7,7 +7,6 @@ import {
 } from 'react-icons/io'
 import InfoAvatar from './InfoAvatar'
 import React from 'react'
-import { mappingTech } from '../utils'
 import { useSession } from 'next-auth/client'
 import InfoNameAndTitle from './InfoNameAndTitle'
 import InfoStack from './InfoStack'
