@@ -27,7 +27,7 @@ const ShowTodoEditor = ({ displayEditor }) => {
 
   const [currentChangingInput, setCurrentChangingInput] = useState({
     uuid: undefined,
-    content: undefined,
+    content: '',
   })
 
   useEffect(() => {
@@ -39,12 +39,16 @@ const ShowTodoEditor = ({ displayEditor }) => {
     // This use effect handle POST requests to DB everytime a task is updated
     // it uses a setTimeout to await some time while the use is typing.
     const timeout = setTimeout(() => {
-      axios(
-        'PATCH',
-        `pages/todos/tasks/${currentChangingInput.uuid}`,
-        { content: currentChangingInput.content, type_of: 'task' },
-        session
-      )
+      if (currentChangingInput.content.length === 0) {
+        return false
+      } else {
+        axios(
+          'PATCH',
+          `pages/todos/tasks/${currentChangingInput.uuid}`,
+          { content: currentChangingInput.content, type_of: 'task' },
+          session
+        )
+      }
     }, 800)
 
     return () => clearTimeout(timeout)
@@ -97,10 +101,8 @@ const ShowTodoEditor = ({ displayEditor }) => {
   }
 
   const saveEditTodo = () => {
-    console.log(todoComponent.tasks)
-    for (let taskId in todoComponent.tasks) {
-      console.log(taskId)
-      if (todoComponent.tasks[taskId].content === '') {
+    for (let taskId in todoComponent.tasksComponents) {
+      if (todoComponent.tasksComponents[taskId].content === '') {
         toast({
           title: 'Hay tareas incompletas.',
           description: 'Asegúrate de rellenar todos los espacios.',
