@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { FaComment } from 'react-icons/fa'
-import { API_BASE_URL } from '../../../../../constants'
+import { API_BASE_URL } from '../../../constants'
 import axios from 'axios'
 import {
   Button,
@@ -20,22 +20,22 @@ import CommentInput from './CommentInput'
 import CommentInputDisabled from './CommentInputDisable'
 import NoComments from './NoComments'
 
-function CommentApp({ post_id }) {
+function CommentApp({ object_id, type_of }) {
   const [comments, setComments] = useState(null)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [session, loading] = useSession()
   const toggleCommentsRef = useRef()
 
-  const fetchPostComments = async (post_id) => {
-    const url = `${API_BASE_URL}/comments/?post_id=${post_id}`
+  const fetchPostComments = async (object_id, type_of) => {
+    const url = `${API_BASE_URL}/comments/?object_id=${object_id}&type_of=${type_of}`
     const res = await axios.get(url)
     const data = await res.data
     setComments(data)
   }
 
   useEffect(() => {
-    fetchPostComments(post_id)
-  }, [post_id])
+    fetchPostComments(object_id, type_of)
+  }, [object_id])
   return (
     <>
       <Button onClick={onOpen} ref={toggleCommentsRef}>
@@ -71,7 +71,11 @@ function CommentApp({ post_id }) {
             }}
           >
             {session ? (
-              <CommentInput setComments={setComments} post_id={post_id} />
+              <CommentInput
+                setComments={setComments}
+                object_id={object_id}
+                type_of={type_of}
+              />
             ) : (
               <CommentInputDisabled />
             )}

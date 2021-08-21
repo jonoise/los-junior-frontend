@@ -1,10 +1,17 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
 import { FaHeart } from 'react-icons/fa'
-import axios from '../../../../../lib/axios'
+import axios from '../../../lib/axios'
 
-function LikeHeart({ post_id, setLikes, setLikesNumber, session, isLiked }) {
-  const performUnlike = async (post_id) => {
+function LikeHeart({
+  object_id,
+  setLikes,
+  setLikesNumber,
+  session,
+  isLiked,
+  type_of,
+}) {
+  const performUnlike = async (object_id) => {
     // Sacamos el like de la lista de likes filtrando por owner.username
     setLikes((prev) => {
       return prev.filter(
@@ -16,9 +23,9 @@ function LikeHeart({ post_id, setLikes, setLikesNumber, session, isLiked }) {
       return prev - 1
     })
 
-    // Old Like es el post_id
+    // Old Like es el object_id
     const oldLike = {
-      post_id,
+      object_id,
     }
 
     try {
@@ -28,7 +35,7 @@ function LikeHeart({ post_id, setLikes, setLikesNumber, session, isLiked }) {
     }
   }
 
-  const performLike = async (post_id, setLikes, setLikesNumber) => {
+  const performLike = async (object_id, setLikes, setLikesNumber, type_of) => {
     setLikes((prev) => {
       // Inserted serialized form of the like object to the current likes state (the state is an array)
       return [...prev, { owner: { username: session.user.username } }]
@@ -39,7 +46,7 @@ function LikeHeart({ post_id, setLikes, setLikesNumber, session, isLiked }) {
     })
 
     const newLike = {
-      post_id,
+      object_id,
     }
 
     try {
@@ -54,13 +61,13 @@ function LikeHeart({ post_id, setLikes, setLikesNumber, session, isLiked }) {
   return (
     <>
       {isLiked ? (
-        <Button mr="2" onClick={() => performUnlike(post_id)}>
+        <Button mr="2" onClick={() => performUnlike(object_id)}>
           <FaHeart color="red" />
         </Button>
       ) : (
         <Button
           mr="2"
-          onClick={() => performLike(post_id, setLikes, setLikesNumber)}
+          onClick={() => performLike(object_id, setLikes, setLikesNumber)}
         >
           <FaHeart />
         </Button>

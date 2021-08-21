@@ -9,9 +9,9 @@ import {
 import { useSession } from 'next-auth/client'
 import { useState } from 'react'
 import { v4 as uuid_v4 } from 'uuid'
-import axios from '../../../../../lib/axios'
+import axios from '../../../lib/axios'
 
-function CommentInput({ post_id, setComments }) {
+function CommentInput({ object_id, setComments, type_of }) {
   const [content, setContent] = useState('')
   const [session] = useSession()
   const [disableSubmit, setDisableSumit] = useState(false)
@@ -29,13 +29,19 @@ function CommentInput({ post_id, setComments }) {
     }
 
     setDisableSumit(true)
+
     const uuid = uuid_v4()
     const newComment = Object.freeze({
       uuid,
-      post_id,
+      object_id,
       content: content.trim(),
     })
-    const comment = await axios('POST', '/comments/', newComment, session)
+    const comment = await axios(
+      'POST',
+      `/comments/?type_of=${type_of}`,
+      newComment,
+      session
+    )
     console.log('COMMENT #1: ', comment)
     setComments((prev) => {
       const newState = [comment.data, ...prev]

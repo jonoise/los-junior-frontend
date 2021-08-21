@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, useColorModeValue, Text, Avatar } from '@chakra-ui/react'
-import formatDate from '../../../../../lib/dateStringify'
+import formatDate from '../../../lib/dateStringify'
 import { useSession } from 'next-auth/client'
 import DeleteComment from './DeleteComment'
 

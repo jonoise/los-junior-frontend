@@ -12,7 +12,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
-import axiosReborn from '../../../../../lib/axios'
+import axiosReborn from '../../../lib/axios'
 import { useSession } from 'next-auth/client'
 import { useRef } from 'react'
 
@@ -37,16 +37,7 @@ const DeleteComment = ({ comment, setComments }) => {
 
   return (
     <>
-      <Tooltip
-        hasArrow
-        label="Eliminar"
-        bg={useColorModeValue('red.500', 'red.500')}
-        color="#e7e7e7d5"
-        placement="top"
-        fontSize="x-small"
-      >
-        <DeleteConfirmation handleDeleteComment={handleDeleteComment} />
-      </Tooltip>
+      <DeleteConfirmation handleDeleteComment={handleDeleteComment} />
     </>
   )
 }

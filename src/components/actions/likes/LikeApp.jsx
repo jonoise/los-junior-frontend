@@ -5,15 +5,15 @@ import { postIsLiked, fetchPostLikes } from './searchLike'
 import Heart from './LikeHeart'
 import HeartOffline from './LikeHearOffline'
 
-function App({ post_id }) {
+function App({ object_id, type_of }) {
   const [likes, setLikes] = useState(null)
   const [isLiked, setIsLiked] = useState(null)
   const [likesNumber, setLikesNumber] = useState(0)
   const [session] = useSession()
 
   useEffect(() => {
-    fetchPostLikes(post_id, setLikes, setLikesNumber)
-  }, [post_id])
+    fetchPostLikes(object_id, setLikes, setLikesNumber, type_of)
+  }, [object_id])
 
   useEffect(() => {
     const username = session && session.user.username
@@ -44,11 +44,12 @@ function App({ post_id }) {
         ) : (
           <>
             <Heart
-              post_id={post_id}
+              object_id={object_id}
               session={session}
               setLikes={setLikes}
               setLikesNumber={setLikesNumber}
               isLiked={isLiked}
+              type_of={type_of}
             />
           </>
         )}

@@ -1,11 +1,11 @@
 import axios from 'axios'
 import {
     API_BASE_URL
-} from '../../../../../constants'
+} from '../../../constants'
 
 
-export const fetchPostLikes = async (post_id, setLikes, setLikesNumber) => {
-    const res = await axios.get(`${API_BASE_URL}/likes/?post_id=${post_id}`, {
+export const fetchPostLikes = async (object_id, setLikes, setLikesNumber, type_of) => {
+    const res = await axios.get(`${API_BASE_URL}/likes/?object_id=${object_id}&type_of=${type_of}`, {
         headers: {
             'content-type': 'application/json',
             accept: 'application/json',
