@@ -1,47 +1,38 @@
 import { Button, Container, Flex, Input, Stack } from '@chakra-ui/react'
 import { useState } from 'react'
-import { v4 as uuid_v4 } from 'uuid'
-import axios from '../../../../lib/axios'
-import { useSession } from 'next-auth/client'
-import { useRouter } from 'next/router'
+import { API_BASE_URL } from '../../../../constants'
+import { useEffect } from 'react'
+import NewPageModal from './NewPageModal'
+import PagesList from './PagesList'
 
 const PageAuthApp = () => {
-  const [session] = useSession()
-  const router = useRouter()
-  const [pageTitle, setPageTitle] = useState('')
+  const [pages, setPages] = useState(null)
+  const [pagesLoading, setPagesLoading] = useState(true)
 
-  const handleTitleChange = (e) => {
-    setPageTitle(e.target.value)
-  }
-
-  const createPage = async () => {
-    const newPage = {
-      uuid: uuid_v4(),
-      title: pageTitle,
-      componentsIds: [],
+  useEffect(() => {
+    const fetchPages = async () => {
+      const data = await (await fetch(`${API_BASE_URL}/pages/`)).json()
+      setPages(data)
+      setPagesLoading(false)
     }
 
-    const res = await axios('POST', '/pages/', newPage, session)
-    if (res.status === 201) {
-      const uuid = res.data.uuid
-      router.push(`/pages/${uuid}`)
-    }
-  }
+    fetchPages()
+  }, [])
 
   return (
     <>
-      <Container minW="container.xl">
-        <Flex w="100%" justify="center">
-          <Stack w="50%">
-            <Input
-              placeholder="Dale un título a tu página"
-              onChange={handleTitleChange}
-              value={pageTitle}
-            />
-            <Button onClick={createPage}>Crear</Button>
-          </Stack>
-        </Flex>
-      </Container>
+      <Flex
+        w="100%"
+        justify="center"
+        px={{ base: 2, lg: '10' }}
+        direction={{ base: 'column', lg: 'row' }}
+      >
+        <Stack w={{ base: 'full', lg: '30%' }} p="5">
+          <NewPageModal />
+          {pagesLoading ? '' : <PagesList pages={pages} />}
+        </Stack>
+        <Stack flex={{ base: '100%', lg: '1' }} p="5"></Stack>
+      </Flex>
     </>
   )
 }
