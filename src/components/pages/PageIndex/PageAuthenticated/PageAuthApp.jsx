@@ -5,13 +5,15 @@ import { useEffect } from 'react'
 import NewPageModal from './NewPageModal'
 import PagesList from './PagesList'
 
-const PageAuthApp = () => {
+const PageAuthApp = ({ session }) => {
   const [pages, setPages] = useState(null)
   const [pagesLoading, setPagesLoading] = useState(true)
 
   useEffect(() => {
     const fetchPages = async () => {
-      const data = await (await fetch(`${API_BASE_URL}/pages/`)).json()
+      const data = await (
+        await fetch(`${API_BASE_URL}/pages/owner/${session.user.username}`)
+      ).json()
       setPages(data)
       setPagesLoading(false)
     }
