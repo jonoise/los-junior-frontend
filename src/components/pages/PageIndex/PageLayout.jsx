@@ -3,6 +3,7 @@ import Loading from '../../loading/MainLoading'
 import Navbar from '../../navbar/NavApp'
 import PageAnonymous from './PageAnonymous/PageAnonApp'
 import PageAuthenticated from './PageAuthenticated/PageAuthApp'
+import Footer from '../../footer/FooterLayout'
 
 const PageLayout = () => {
   const [session, loading] = useSession()
@@ -13,6 +14,7 @@ const PageLayout = () => {
       {loading && <Loading />}
       {!loading && !session && <PageAnonymous />}
       {!loading && session && <PageAuthenticated session={session} />}
+      <Footer />
     </>
   )
 }
