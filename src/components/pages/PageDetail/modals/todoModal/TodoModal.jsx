@@ -44,8 +44,6 @@ function TodoModal() {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  // We are getting this position from the carousel.
-
   const initialTaskId = uuid_v4()
   const initialTodo = {
     uuid: uuid_v4(),
@@ -79,7 +77,7 @@ function TodoModal() {
 
   const createNewTask = () => {
     const newTask = {
-      uuid: uuid_v4,
+      uuid: uuid_v4(),
       content: '',
       status: 'pending',
       type_of: 'task',
