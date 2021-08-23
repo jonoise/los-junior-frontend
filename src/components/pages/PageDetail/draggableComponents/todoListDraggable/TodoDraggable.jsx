@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, Stack, Text } from '@chakra-ui/react'
 import { useSession } from 'next-auth/client'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,7 +13,7 @@ const TodoDraggable = ({ uuid, provided }) => {
   // COMPONENT TYPE_: TODO
   const dispatch = useDispatch()
   const page = useSelector(selectPage)
-  const todoComponent = page.components[uuid] //uuid === todoComponentId
+  const todoComponent = page.components[uuid]
   const [session] = useSession()
 
   const onDragEnd = (result) => {
@@ -97,22 +97,32 @@ const TodoDraggable = ({ uuid, provided }) => {
     reorderSameColumnRequest(todoComponent, newCol, session)
     dispatch(updateComponent(payload))
   }
+
   return (
     <>
       <Flex {...provided.draggableProps} ref={provided.innerRef} mb="2.5rem">
         {/* HANDLER/CRUD */}
         <ComponentHandler uuid={uuid} provided={provided} />
         {/* TODO DND COMPONENT */}
-        <DragDropContext onDragEnd={onDragEnd}>
-          {todoComponent.columnsOrder.map((columnId) => {
-            const column = todoComponent.columns[columnId]
-            return (
-              <Flex direction="column" key={column.id} w="full" align="center">
-                <Column column={column} todoComponent={todoComponent} />
-              </Flex>
-            )
-          })}
-        </DragDropContext>
+        <Stack w="full">
+          <Text ml="10" fontSize="20px" fontWeight="bold">
+            Todo: {todoComponent.title}
+          </Text>
+          <Flex w="full" align="center">
+            <DragDropContext onDragEnd={onDragEnd}>
+              {todoComponent.columnsOrder.map((columnId) => {
+                const column = todoComponent.columns[columnId]
+                return (
+                  <Column
+                    column={column}
+                    todoComponent={todoComponent}
+                    key={column.id}
+                  />
+                )
+              })}
+            </DragDropContext>
+          </Flex>
+        </Stack>
       </Flex>
     </>
   )
