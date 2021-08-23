@@ -4,6 +4,7 @@ import NavApp from '../../components/navbar/NavApp'
 import dynamic from 'next/dynamic'
 import Sidebar from '../../components/pages/PageDetail/Sidebar'
 import Editor from '../../components/pages/PageDetail/Editor'
+import GenericHead from '../../components/generichead/GenericHead'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadPage } from '../../components/pages/pageSlice'
 import { selectPageSettings } from '../../components/pages/pageSettingsSlice'
@@ -28,6 +29,14 @@ function PageDetail(props) {
 
   return (
     <>
+      <GenericHead
+        key={page.uuid}
+        title={`Página: ${page.title}`}
+        description={page.description || 'A single page'}
+        type="text"
+        url="/pages"
+        image="https://user-images.githubusercontent.com/71573508/128595157-8d8bec29-8bf0-426a-aaf6-8ff1e1428cdf.png"
+      />
       <NavApp />
       <HStack h="100vh" py="5" px="2">
         <Flex
