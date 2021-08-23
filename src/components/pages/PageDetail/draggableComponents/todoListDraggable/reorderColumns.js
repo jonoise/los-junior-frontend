@@ -1,9 +1,5 @@
 import axios from "../../../../../lib/axios"
 
-// The payload for this funcs contains uuid and todoComponent
-// payload = {uuid:string, component: {...todoComponent}}
-
-
 // Request to reorder when tasks change between columns
 export const reorderSwitchColumnsRequest = async (payload, session) => {
     const todoComponent = payload.component
@@ -36,3 +32,8 @@ export const reorderSameColumnRequest = async (todoComponent, newCol, session) =
     }
     await axios('PATCH', `/pages/todos/${todoComponent.uuid}/`, patch_object, session)
 }
+
+// SPECIFICS: 
+
+// - The payload for this funcs contains uuid and todoComponent
+// - payload = {uuid:string, component: {...todoComponent}}
