@@ -1,5 +1,7 @@
 import LoginLayout from '../components/login/LoginLayout'
 import GenericHead from '../components/generichead/GenericHead'
+import { getSession } from 'next-auth/client'
+
 function Login() {
   return (
     <>
@@ -16,3 +18,19 @@ function Login() {
 }
 
 export default Login
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context)
+  if (session) {
+    return {
+      redirect: {
+        destination: '/?message=alreadyAuth',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
+}
