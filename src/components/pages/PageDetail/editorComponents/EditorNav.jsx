@@ -14,6 +14,8 @@ import {
   selectPageSettings,
   setEditor,
 } from '../../pageSettingsSlice'
+import MarkdownEditorNav from './markdownEditor/MarkdownEditorNav'
+
 function EditorNav() {
   const dispatch = useDispatch()
   const pageSettings = useSelector(selectPageSettings)
@@ -36,36 +38,8 @@ function EditorNav() {
       bg={useColorModeValue('white', 'gray.900')}
       zIndex="3"
     >
-      {currentEditor === 'markdown' ? (
-        // Si el editor es Markdown, mostramos el ícono.
-        <HStack>
-          <Button
-            transition="1s ease"
-            cursor="pointer"
-            p="0"
-            m="0.5"
-            size="xs"
-            outline="none"
-            onClick={saveComponent}
-          >
-            <BiSave fontSize="25px" />
-          </Button>
-          {unsavedChanges && editorIsOpen ? (
-            <Badge colorScheme="red">Hay cambios sin guardar</Badge>
-          ) : (
-            ''
-          )}
-        </HStack>
-      ) : (
-        // De lo contrario solo mostrar alerta para guardar componente.
-        <Box>
-          {unsavedChanges ? (
-            <Badge colorScheme="red">Hay cambios sin guardar</Badge>
-          ) : (
-            ''
-          )}
-        </Box>
-      )}
+      {currentEditor === 'markdown' && <MarkdownEditorNav />}
+      {!currentEditor && <Flex></Flex>}
       <Button
         transform={editorIsOpen ? 'rotate(180deg)' : 'none'}
         transition="1s ease"
