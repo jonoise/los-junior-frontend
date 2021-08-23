@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectPageSettings } from '../../../pageSettingsSlice'
 import { addComponent, selectPage, updateComponent } from '../../../pageSlice'
 import axios from '../../../../../lib/axios'
+import DeleteTask from './DeleteTask'
 
 const ShowTodoEditor = ({ displayEditor }) => {
   const toast = useToast()
@@ -159,9 +160,11 @@ const ShowTodoEditor = ({ displayEditor }) => {
                       placeholder={task.content ? task.content : 'Editar tarea'}
                     />
                     <Flex id="settings" align="center">
-                      <Button p="0" ml="2" onClick={() => deleteTask(uuid)}>
-                        <AiFillDelete />
-                      </Button>
+                      <DeleteTask
+                        uuid={uuid}
+                        todoComponent={todoComponent}
+                        session={session}
+                      />
                     </Flex>
                   </Flex>
                 )

@@ -158,7 +158,6 @@ function TodoModal() {
   }
 
   useEffect(() => {
-    console.log(page)
     if (didMount) {
       // Si el component se acaba de montar,
       // no vamos a efectuar ninguna acción. Solo on re-renders
