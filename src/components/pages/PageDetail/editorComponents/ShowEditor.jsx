@@ -2,7 +2,7 @@ import { Flex, Text } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { selectPageSettings } from '../../pageSettingsSlice'
-import ShowMarkdownEditor from './ShowMarkdownEditor'
+import ShowMarkdownEditor from './markdownEditor/ShowMarkdownEditor'
 import ShowTodoEditor from './todoEditor/ShowTodoEditor'
 
 const ShowEditor = () => {

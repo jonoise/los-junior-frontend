@@ -31,7 +31,6 @@ const ShowTodoEditor = ({ displayEditor }) => {
   })
 
   useEffect(() => {
-    console.log(page)
     setTodoComponent(page.components[currentComponentId])
   }, [page.components])
 

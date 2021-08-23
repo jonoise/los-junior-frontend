@@ -11,7 +11,8 @@ const HomeLayout = () => {
     <>
       <Navbar />
       {!loading && !session && <HomeAnonymous />}
-      {!loading && session && <HomeAuthenticated />}
+      {/* {!loading && session && <HomeAuthenticated />} */}
+      {!loading && session && <HomeAnonymous />}
       {loading && <Loading />}
       <Footer />
     </>

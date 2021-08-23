@@ -48,11 +48,11 @@ const SidebarBody = () => {
       <TodoModal />
 
       <GradesModal />
-      <Tooltip hasArrow label="Quiz" bg="white" color="black" placement="right">
+      {/* <Tooltip hasArrow label="Quiz" bg="white" color="black" placement="right">
         <Button p="0" m="0" size="sm" className="disableFocus">
           <FaQuestion />
         </Button>
-      </Tooltip>
+      </Tooltip> */}
     </VStack>
   )
 }
