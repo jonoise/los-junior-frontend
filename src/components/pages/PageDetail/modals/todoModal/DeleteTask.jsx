@@ -1,4 +1,3 @@
-import { Button, useDisclosure } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import {
@@ -9,50 +8,31 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   AlertDialogCloseButton,
+  Button,
+  useDisclosure,
 } from '@chakra-ui/react'
-import { updateComponent } from '../../../pageSlice'
-import { useDispatch } from 'react-redux'
-import axios from '../../../../../lib/axios'
 import { filterColumns } from '../../../../../lib/filterTodoColumns'
 
-const DeleteTask = ({ uuid, todoComponent, session }) => {
-  const dispatch = useDispatch()
+const DeleteTask = ({ uuid, todoComponent, setTodoComponent }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
-
   const handleDeleteTask = () => {
     const filteredColumns = filterColumns(uuid, todoComponent)
-    const updatedTodoComponent = {
-      ...todoComponent,
+    console.log(filteredColumns)
+    setTodoComponent((prev) => ({
+      ...prev,
       columns: {
         pending_tasks: {
-          ...todoComponent.columns.pending_tasks,
+          ...prev.columns.pending_tasks,
           tasksIds: filteredColumns.newPendingIds,
         },
         completed_tasks: {
-          ...todoComponent.columns.completed_tasks,
+          ...prev.columns.completed_tasks,
           tasksIds: filteredColumns.newCompletedIds,
         },
       },
       tasksIds: filteredColumns.newTasksIds,
-    }
-    dispatch(
-      updateComponent({
-        uuid: todoComponent.uuid,
-        component: updatedTodoComponent,
-      })
-    )
-    axios('DELETE', `/pages/todos/tasks/${uuid}/`, null, session)
-    axios(
-      'PATCH',
-      `/pages/todos/${todoComponent.uuid}/`,
-      {
-        pending_tasksIds: filteredColumns.newPendingIds,
-        completed_tasksIds: filteredColumns.newCompletedIds,
-        tasksIds: filteredColumns.newTasksIds,
-      },
-      session
-    )
+    }))
   }
 
   return (

@@ -16,15 +16,15 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import { v4 as uuid_v4 } from 'uuid'
-import { nanoid } from 'nanoid'
 
 import { AiOutlineUnorderedList, AiFillPlusSquare } from 'react-icons/ai'
 
-import { addComponent, selectPage } from '../../pageSlice'
+import { addComponent, selectPage } from '../../../pageSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
-import axios from '../../../../lib/axios'
+import axios from '../../../../../lib/axios'
 import { useSession } from 'next-auth/client'
+import DeleteTask from './DeleteTask'
 
 function TodoModal() {
   function useDidMount() {
@@ -46,7 +46,7 @@ function TodoModal() {
 
   // We are getting this position from the carousel.
 
-  const initialTaskId = nanoid(20)
+  const initialTaskId = uuid_v4()
   const initialTodo = {
     uuid: uuid_v4(),
     title: '',
@@ -79,7 +79,7 @@ function TodoModal() {
 
   const createNewTask = () => {
     const newTask = {
-      uuid: nanoid(20),
+      uuid: uuid_v4(),
       content: '',
       status: 'pending',
       type_of: 'task',
@@ -228,6 +228,13 @@ function TodoModal() {
                     ref={newTaskInputFocus}
                     placeholder="Agrega tarea nueva."
                   />
+                  <Flex id="settings" align="center">
+                    <DeleteTask
+                      uuid={uuid}
+                      todoComponent={todoComponent}
+                      setTodoComponent={setTodoComponent}
+                    />
+                  </Flex>
                 </Flex>
               ))}
 

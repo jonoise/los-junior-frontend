@@ -12,7 +12,7 @@ import {
 import React from 'react'
 import { FaGraduationCap, FaQuestion } from 'react-icons/fa'
 import MarkdownModal from './modals/MarkdownModal'
-import TodoModal from './modals/TodoModal'
+import TodoModal from './modals/todoModal/TodoModal'
 import GradesModal from './modals/GradesModal'
 
 function Sidebar() {
