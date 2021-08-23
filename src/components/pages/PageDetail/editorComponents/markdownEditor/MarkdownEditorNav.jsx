@@ -50,6 +50,7 @@ const MarkdownEditorNav = () => {
           id: 'markdown saved',
           title: 'Guardado 💌',
           status: 'success',
+          duration: '2000',
         })
       }
     } catch (error) {
@@ -58,6 +59,7 @@ const MarkdownEditorNav = () => {
         title: `Algo salió mal`,
         description: 'Vulve a intentarlo 🚫',
         status: 'error',
+        duration: '2000',
       })
     }
   }
@@ -70,6 +72,7 @@ const MarkdownEditorNav = () => {
           id: 'markdown copied',
           title: `Copiado ✅`,
           status: 'success',
+          duration: '2000',
         })
       })
       .catch((err) => {
@@ -78,6 +81,7 @@ const MarkdownEditorNav = () => {
           title: `Algo salió mal`,
           description: 'Vulve a intentarlo 🚫',
           status: 'success',
+          duration: '2000',
         })
       })
   }
