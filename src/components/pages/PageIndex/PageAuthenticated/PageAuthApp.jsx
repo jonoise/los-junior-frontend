@@ -49,7 +49,7 @@ const PageAuthApp = ({ session }) => {
         </Stack>
         {/* MAIN FRAME */}
         <Flex direction="column" flex={{ base: '100%', lg: '1' }} p="5">
-          {pagesLoading ? 'LOADING...' : <MainPagesList pages={pages} />}
+          {pagesLoading ? <QuickLoader /> : <MainPagesList pages={pages} />}
         </Flex>
       </Flex>
     </>
@@ -72,5 +72,13 @@ const MiniAvatar = ({ session }) => {
         <Text>{session.user.name}</Text>
       </HStack>
     </HStack>
+  )
+}
+
+const QuickLoader = () => {
+  return (
+    <Flex minH="70vh" w="full" justify="center" align="center">
+      <Text fontWeight="bold">Cargando...</Text>
+    </Flex>
   )
 }
