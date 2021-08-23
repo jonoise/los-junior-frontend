@@ -27,7 +27,6 @@ function EditorNav() {
     dispatch(setEditor({ id: null, type_: null }))
   }
 
-  const saveComponent = () => {}
   return (
     <Flex
       h="auto"
@@ -39,6 +38,7 @@ function EditorNav() {
       zIndex="3"
     >
       {currentEditor === 'markdown' && <MarkdownEditorNav />}
+      {currentEditor === 'todo' && <Flex></Flex>}
       {!currentEditor && <Flex></Flex>}
       <Button
         transform={editorIsOpen ? 'rotate(180deg)' : 'none'}

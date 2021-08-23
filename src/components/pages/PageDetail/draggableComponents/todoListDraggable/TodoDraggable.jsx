@@ -106,7 +106,7 @@ const TodoDraggable = ({ uuid, provided }) => {
         {/* TODO DND COMPONENT */}
         <Stack w="full">
           <Text ml="10" fontSize="20px" fontWeight="bold">
-            Todo: {todoComponent.title}
+            Lista de tareas: {todoComponent.title}
           </Text>
           <Flex w="full" align="center">
             <DragDropContext onDragEnd={onDragEnd}>
