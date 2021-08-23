@@ -6,7 +6,6 @@ const PageAnonApp = () => {
       <div id="hero">
         <Hero />
       </div>
-      <Footer />
     </>
   )
 }
