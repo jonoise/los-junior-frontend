@@ -5,11 +5,14 @@ import { Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { Flex, useColorModeValue, VStack } from '@chakra-ui/react'
 import DraggableComponent from './DraggableComponent'
 import { selectStateMarkdownContent } from './editorComponents/markdownEditor/markdownEditorSlice'
+import axios from '../../../lib/axios'
+import { useSession } from 'next-auth/client'
 function View() {
   const dispatch = useDispatch()
   const page = useSelector(selectPage)
   const markdownEditorContent = useSelector(selectStateMarkdownContent)
   const [dragging, setDragging] = useState(false)
+  const [session] = useSession()
 
   useEffect(() => {
     const viewWindow = document.getElementById('viewWindow')
@@ -39,6 +42,12 @@ function View() {
     const newComponentList = Array.from(page.column.componentsIds)
     newComponentList.splice(source.index, 1)
     newComponentList.splice(destination.index, 0, draggableId)
+    axios(
+      'PATCH',
+      `/pages/${page.uuid}/`,
+      { componentsIds: newComponentList },
+      session
+    )
     dispatch(reorderColumn(newComponentList))
   }
 
