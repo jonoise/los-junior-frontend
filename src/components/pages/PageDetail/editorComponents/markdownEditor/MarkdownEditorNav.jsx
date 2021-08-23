@@ -9,21 +9,22 @@ import {
 import { RiSave3Fill, RiFileCopyFill } from 'react-icons/ri'
 import { useSelector } from 'react-redux'
 import axios from '../../../../../lib/axios'
-import { selectStateMarkdownContent } from './markdownEditorSlice'
-import { selectPageSettings } from '../../../pageSettingsSlice'
 import { useSession } from 'next-auth/client'
+import { selectPage } from '../../../pageSlice'
+import { selectPageSettings } from '../../../pageSettingsSlice'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const MarkdownEditorNav = () => {
   const toast = useToast()
-  const content = useSelector(selectStateMarkdownContent)
   const [session] = useSession()
 
   const [unsavedContent, setUnsavedContent] = useState(false)
   const [backuptimer, setBackuptimer] = useState(false)
 
   const { currentComponentId } = useSelector(selectPageSettings)
+  const page = useSelector(selectPage)
+  const content = page.components[currentComponentId].content
 
   useEffect(() => {
     const timer = setTimeout(() => {
