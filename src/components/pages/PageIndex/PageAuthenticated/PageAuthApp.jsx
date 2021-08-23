@@ -49,6 +49,7 @@ const PageAuthApp = ({ session }) => {
         </Stack>
         {/* MAIN FRAME */}
         <Flex direction="column" flex={{ base: '100%', lg: '1' }} p="5">
+          <PagesNav />
           {pagesLoading ? <QuickLoader /> : <MainPagesList pages={pages} />}
         </Flex>
       </Flex>
@@ -80,5 +81,20 @@ const QuickLoader = () => {
     <Flex minH="70vh" w="full" justify="center" align="center">
       <Text fontWeight="bold">Cargando...</Text>
     </Flex>
+  )
+}
+
+const PagesNav = () => {
+  return (
+    <HStack
+      w="full"
+      px="5"
+      minH="40px"
+      bg={useColorModeValue('gray.200', 'gray.900')}
+      borderTopLeftRadius="md"
+      borderTopRightRadius="md"
+    >
+      <HStack></HStack>
+    </HStack>
   )
 }

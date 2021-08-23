@@ -17,7 +17,6 @@ import NewPageModal from './newPageModal/NewPageModal'
 const MainPagesList = ({ pages }) => {
   return (
     <>
-      <PagesNav />
       <Stack minH="70vh">
         {pages.length > 0 &&
           pages.map((page) => {
@@ -32,21 +31,6 @@ const MainPagesList = ({ pages }) => {
 }
 
 export default MainPagesList
-
-const PagesNav = () => {
-  return (
-    <HStack
-      w="full"
-      px="5"
-      minH="40px"
-      bg={useColorModeValue('gray.200', 'gray.900')}
-      borderTopLeftRadius="md"
-      borderTopRightRadius="md"
-    >
-      <HStack></HStack>
-    </HStack>
-  )
-}
 
 const SinglePageBox = ({ page }) => {
   return (
