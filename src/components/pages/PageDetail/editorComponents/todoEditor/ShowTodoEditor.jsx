@@ -7,7 +7,7 @@ import {
   Text,
   useToast,
 } from '@chakra-ui/react'
-import { nanoid } from 'nanoid'
+import { v4 as uuid_v4 } from 'uuid'
 import { useSession } from 'next-auth/client'
 import { useEffect, useRef, useState } from 'react'
 import { AiFillPlusSquare, AiFillDelete } from 'react-icons/ai'
@@ -44,7 +44,7 @@ const ShowTodoEditor = ({ displayEditor }) => {
       } else {
         axios(
           'PATCH',
-          `pages/todos/tasks/${currentChangingInput.uuid}`,
+          `pages/todos/tasks/${currentChangingInput.uuid}/`,
           { content: currentChangingInput.content, type_of: 'task' },
           session
         )
@@ -56,7 +56,7 @@ const ShowTodoEditor = ({ displayEditor }) => {
 
   const createNewTask = () => {
     const newTask = {
-      uuid: nanoid(20),
+      uuid: uuid_v4(),
       content: '',
     }
 
@@ -84,14 +84,10 @@ const ShowTodoEditor = ({ displayEditor }) => {
     axios('POST', `pages/todos/${todoComponent.uuid}/tasks/`, newTask, session)
   }
 
-  const deleteTask = (task_uuid) => {
-    const pending_tasks = todoComponent.columns.pending_tasks.tasksIds
-    const completed_tasks = todoComponent.columns.completed_tasks.tasksIds
-
-    return true
-  }
-
   const handleTaskInputChange = (e) => {
+    console.log(todoComponent)
+    console.log(e.target.id)
+    console.log(e.target.value)
     setTodoComponent({
       ...todoComponent,
       tasksComponents: {
@@ -108,6 +104,7 @@ const ShowTodoEditor = ({ displayEditor }) => {
   }
 
   const saveEditTodo = () => {
+    console.log(todoComponent)
     for (let taskId in todoComponent.tasksComponents) {
       if (todoComponent.tasksComponents[taskId].content === '') {
         toast({
