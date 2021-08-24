@@ -21,7 +21,6 @@ import {
   useColorMode,
 } from '@chakra-ui/react'
 import { v4 as uuid_v4 } from 'uuid'
-import { customAlphabet } from 'nanoid'
 import useDidMount from '../../../../hooks/useDidMount'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -39,7 +38,6 @@ function GradesModal() {
   const [dueDate, setDueDate] = useState({ initialEvaluation: null })
   const initialInputFocus = useRef()
   const newTaskInputFocus = useRef()
-  const nanoid = customAlphabet('1234567890abcdef', 10)
 
   const dispatch = useDispatch()
   const toast = useToast()
@@ -68,7 +66,7 @@ function GradesModal() {
 
   const createNewEvaluation = () => {
     const newEvaluation = {
-      id: nanoid(),
+      id: uuid_v4(),
       title: '',
       dueDate: null,
       points: 0,
