@@ -19,6 +19,9 @@ const DeleteTask = ({ uuid, todoComponent, setTodoComponent }) => {
   const handleDeleteTask = () => {
     const filteredColumns = filterColumns(uuid, todoComponent)
     console.log(filteredColumns)
+
+    delete todoComponent.tasksComponents[uuid]
+
     setTodoComponent((prev) => ({
       ...prev,
       columns: {
