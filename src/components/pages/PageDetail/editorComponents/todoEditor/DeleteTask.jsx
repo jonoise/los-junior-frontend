@@ -22,6 +22,7 @@ const DeleteTask = ({ uuid, todoComponent, session }) => {
 
   const handleDeleteTask = () => {
     const filteredColumns = filterColumns(uuid, todoComponent)
+    delete todoComponent[uuid]
     const updatedTodoComponent = {
       ...todoComponent,
       columns: {
