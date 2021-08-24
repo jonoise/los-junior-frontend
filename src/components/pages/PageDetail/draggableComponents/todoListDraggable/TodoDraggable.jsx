@@ -1,4 +1,4 @@
-import { Flex, Stack, Text } from '@chakra-ui/react'
+import { Flex, HStack, Stack, Text, useColorModeValue } from '@chakra-ui/react'
 import { useSession } from 'next-auth/client'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
@@ -100,14 +100,34 @@ const TodoDraggable = ({ uuid, provided }) => {
 
   return (
     <>
-      <Flex {...provided.draggableProps} ref={provided.innerRef} mb="2.5rem">
+      <Flex
+        {...provided.draggableProps}
+        ref={provided.innerRef}
+        py="1rem"
+        bg={useColorModeValue('white', 'gray.800')}
+      >
         {/* HANDLER/CRUD */}
         <ComponentHandler uuid={uuid} provided={provided} />
         {/* TODO DND COMPONENT */}
         <Stack w="full">
-          <Text ml="10" fontSize="20px" fontWeight="bold">
-            Lista de tareas: {todoComponent.title}
-          </Text>
+          <HStack>
+            <Text
+              ml="10"
+              fontSize="20px"
+              fontWeight="bold"
+              color={useColorModeValue('green.900', 'teal.300')}
+            >
+              Lista de tareas:
+            </Text>
+            <Text
+              ml="10"
+              fontSize="20px"
+              fontWeight="normal"
+              color={useColorModeValue('#262626', 'gray.200')}
+            >
+              {todoComponent.title.replace(/^\w/, (c) => c.toUpperCase())}
+            </Text>
+          </HStack>
           <Flex w="full" align="center">
             <DragDropContext onDragEnd={onDragEnd}>
               {todoComponent.columnsOrder.map((columnId) => {

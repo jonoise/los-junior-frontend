@@ -67,7 +67,7 @@ function View() {
               dragging ? '#f8f8f8' : 'white',
               dragging ? 'gray.700' : 'gray.800'
             )}
-            borderRadius="10px"
+            borderColor="#a5a5a5"
             direction="column"
             overflowY="auto"
             ref={provided.innerRef}

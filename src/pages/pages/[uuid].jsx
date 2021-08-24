@@ -46,7 +46,6 @@ function PageDetail(props) {
           maxW="12"
           p="2"
           border="1px dotted"
-          borderRadius="10px"
           borderColor="#a5a5a5"
         >
           {/* PAGE SIDEBAR */}
@@ -62,7 +61,6 @@ function PageDetail(props) {
           transition=".7s all"
           border="1px dotted"
           borderColor="#a5a5a5"
-          borderRadius="10px"
           css={{
             '&::-webkit-scrollbar': {
               background: 'black',

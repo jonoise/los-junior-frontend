@@ -14,6 +14,8 @@ function Column({ column, todoComponent }) {
         p="4"
         m="2"
         border="1px solid #ffeedd06"
+        bg={useColorModeValue('#F9F9F9', '#1B212D')}
+        border={useColorModeValue('1px solid #e6e6e664', '1px solid #ffeedd06')}
       >
         <Text>Tareas {column.title}</Text>
         <Droppable droppableId={column.id}>
