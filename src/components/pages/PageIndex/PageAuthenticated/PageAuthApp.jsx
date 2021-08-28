@@ -50,7 +50,11 @@ const PageAuthApp = ({ session }) => {
         {/* MAIN FRAME */}
         <Flex direction="column" flex={{ base: '100%', lg: '1' }} p="5">
           <PagesNav />
-          {pagesLoading ? <QuickLoader /> : <MainPagesList pages={pages} />}
+          {pagesLoading ? (
+            <QuickLoader />
+          ) : (
+            <MainPagesList pages={pages} setPages={setPages} />
+          )}
         </Flex>
       </Flex>
     </>

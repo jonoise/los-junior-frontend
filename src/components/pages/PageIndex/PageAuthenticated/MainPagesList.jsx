@@ -12,16 +12,19 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import { TiUser } from 'react-icons/ti'
+import DeletePage from './DeletePage'
 import NewPageModal from './newPageModal/NewPageModal'
 
-const MainPagesList = ({ pages }) => {
+const MainPagesList = ({ pages, setPages }) => {
   return (
     <>
       <Stack minH="70vh">
         {pages.length > 0 &&
           pages.map((page) => {
             console.log(page)
-            return <SinglePageBox page={page} key={page.uuid} />
+            return (
+              <SinglePageBox page={page} key={page.uuid} setPages={setPages} />
+            )
           })}
 
         {pages.length === 0 && <NoPages />}
@@ -32,12 +35,12 @@ const MainPagesList = ({ pages }) => {
 
 export default MainPagesList
 
-const SinglePageBox = ({ page }) => {
+const SinglePageBox = ({ page, setPages }) => {
   return (
     <Stack
       _hover={{ bg: '#ffddee06' }}
-      px={{ base: '2', lg: '10' }}
-      pt={{ base: '2', lg: '10' }}
+      px={{ base: '2', lg: '2' }}
+      pt={{ base: '2', lg: '2' }}
       pb="2"
     >
       <Flex justify="space-between" align="center">
@@ -52,7 +55,10 @@ const SinglePageBox = ({ page }) => {
             </Text>
           </Link>
         </HStack>
-        <Badge>{page.category}</Badge>
+        <HStack>
+          <Badge>{page.category}</Badge>
+          <DeletePage page={page} setPages={setPages} />
+        </HStack>
       </Flex>
       <Flex justify="space-between">
         <Text
